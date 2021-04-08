@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { rootReducer, rootSaga } from './store';
+import { customStyles } from './css/customStyles';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -21,7 +22,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Global styles={[sanitize]} />
+      <Global styles={[sanitize, customStyles]} />
       <App />
     </Provider>
   </React.StrictMode>,
