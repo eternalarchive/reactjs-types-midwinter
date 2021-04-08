@@ -12,8 +12,8 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/sign_up" component={SignUpPage} exact />
-        <Route path="/sign_in" component={SignInPage} exact />
+        <Route path="/register" component={SignUpPage} exact />
+        <Route path="/login" component={SignInPage} exact />
         <Route path="/tickets" component={TicketsPage} exact />
         <Route path="/statistics" component={StatisticsPage} exact />
         <Route path="/" component={CalendarPage} exact />
