@@ -1,0 +1,3 @@
+build/*
+public/*
+craco.config.js
