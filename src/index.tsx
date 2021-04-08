@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { Global } from '@emotion/react';
+import { sanitize } from 'emotion-sanitize';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -19,6 +21,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <Global styles={[sanitize]} />
       <App />
     </Provider>
   </React.StrictMode>,
