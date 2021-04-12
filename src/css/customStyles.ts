@@ -56,6 +56,10 @@ export const customStyles = css`
     cursor: pointer;
   }
 
+  ul {
+    padding-left: 0;
+  }
+
   .a11y-hidden {
     overflow: hidden;
     position: absolute;
