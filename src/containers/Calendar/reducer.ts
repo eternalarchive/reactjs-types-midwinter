@@ -5,7 +5,7 @@ import { TticketDatas } from './saga';
 
 interface IinitialState {
   loading: boolean;
-  calendarDatas: any | null;
+  calendarDatas: TticketDatas[] | null;
 }
 
 export const initialState: IinitialState = {

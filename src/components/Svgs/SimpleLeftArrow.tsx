@@ -13,8 +13,8 @@ function SimpleLeftArrow() {
         stroke="#000"
         strokeLinecap="round"
         strokeWidth="1.5px"
-        d="M3268.321 191.595l5 5.5-5 5.5"
-        transform="translate(-3267.262 -190.535)"
+        d="M3273.321 191.595l-5 5.5 5 5.5"
+        transform="translate(-3267.308 -190.535)"
       />
     </svg>
   );
