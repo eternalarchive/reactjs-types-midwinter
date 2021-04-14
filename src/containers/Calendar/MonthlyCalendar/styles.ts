@@ -49,26 +49,28 @@ export const S = {
         }
         &.grayed {
           color: #e7e7e7;
+          img {
+            opacity: 0.3;
+            filter: grayscale(100%);
+          }
         }
         &:hover:not(.indicator) {
           border-radius: 5px;
           box-shadow: 0 0 10px 0 rgba(93, 93, 93, 0.15);
         }
         &.today {
-          background-color: rgba(#ff7777, 0.1);
-          text-align: center;
-        }
-        &.selected {
           span.text {
             font-weight: 700;
             border-radius: 5px;
-            border: 1px solid #2b6cff;
+            background-color: #f7fbff;
+            text-align: center;
           }
         }
         img {
           width: 100%;
           height: 100%;
           overflow: hidden;
+          border-radius: 5px;
         }
         span.text {
           border-radius: 5px;

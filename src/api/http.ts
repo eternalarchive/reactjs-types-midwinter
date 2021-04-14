@@ -43,6 +43,20 @@ const axiosInstance = () => {
   return axios.create(params);
 };
 
+export const get = (path: string) => {
+  const instance = axiosInstance();
+  return new Promise((resolve, reject) => {
+    instance
+      .get(path)
+      .then(response => {
+        resolve(response);
+      })
+      .catch(error => {
+        reject(handleError(error.response.status));
+      });
+  });
+};
+
 export const post = (path: string, data: unknown) => {
   const instance = axiosInstance();
   return new Promise((resolve, reject) => {
@@ -52,7 +66,6 @@ export const post = (path: string, data: unknown) => {
         resolve(response);
       })
       .catch(error => {
-        console.dir(error);
         reject(handleError(error.response.status));
       });
   });

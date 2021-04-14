@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
+import { useSelector } from 'react-redux';
 import { SimpleRightArrow, SimpleLeftArrow } from '../../../components/Svgs';
+import { rootState } from '../../../store/rootReducer';
 import { S } from './styles';
 
 interface MonthlyCalendarProps {
@@ -10,9 +12,46 @@ interface MonthlyCalendarProps {
 
 function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
   const [date, setDate] = useState(dayjs());
+  const calendarDatas = useSelector(
+    (state: rootState) => state.calendar.calendarDatas,
+  );
 
   const changeDate = (newDate: React.SetStateAction<dayjs.Dayjs>) => {
     setDate(newDate);
+  };
+
+  const renderPoster = (current: dayjs.Dayjs, isToday: string) => {
+    if (!calendarDatas) {
+      return (
+        <span className={`text`}>{`${current.format('D')}\n${
+          isToday && 'TODAY'
+        }`}</span>
+      );
+    }
+
+    const ticketDatas = calendarDatas.filter(
+      (data: { schedule: string }) =>
+        dayjs(data.schedule).format('YYYYMMDD') === current.format('YYYYMMDD'),
+    );
+    return (
+      <>
+        {ticketDatas.length !== 0 ? (
+          ticketDatas.map(
+            (ticket: { title: string; schedule: string; poster: string }) => (
+              <img
+                key={`${ticket.title} ${ticket.schedule}`}
+                src={ticket.poster}
+                alt={`${ticket.title} ${ticket.schedule}`}
+              />
+            ),
+          )
+        ) : (
+          <span className={`text`}>{`${current.format('D')}\n${
+            isToday && 'TODAY'
+          }`}</span>
+        )}
+      </>
+    );
   };
 
   const generate = () => {
@@ -37,21 +76,15 @@ function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
                 today.format('YYYYMMDD') === current.format('YYYYMMDD')
                   ? 'today'
                   : '';
-              const isSelected =
-                today.format('YYYYMMDD') === current.format('YYYYMMDD')
-                  ? 'selected'
-                  : '';
               const isGrayed =
                 current.format('MM') === date.format('MM') ? '' : 'grayed';
               return (
                 <div
-                  className={`box ${isSelected} ${isGrayed} ${isToday}`}
+                  className={`box ${isGrayed} ${isToday}`}
                   key={current.format('YYYYMMDD')}
                   onClick={() => openTicketForm(current.format())}
                 >
-                  <span className={`text`}>{`${current.format('D')}\n${
-                    isToday && 'TODAY'
-                  }`}</span>
+                  {renderPoster(current, isToday)}
                 </div>
               );
             })}

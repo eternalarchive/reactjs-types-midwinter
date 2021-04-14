@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import { rootState } from '../../store/rootReducer';
 import { CloseIcon } from '../../components/Svgs';
+import { getAllTicketsRequest } from '../Calendar/actions';
 import { hideTicketInputForm, postAddTicketRequest } from './actions';
 import PosterSearchInput from './PosterSearchInput';
 import { S } from './styles';
@@ -22,7 +23,7 @@ export interface TsubmitTicketDatas {
 }
 
 export interface TinputTicketDatas {
-  poster?: string;
+  poster: string;
   category?: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
   title: string;
   schedule: string;
@@ -98,6 +99,7 @@ function TicketInput() {
   };
 
   const closeForm = () => {
+    dispatch(getAllTicketsRequest());
     dispatch(hideTicketInputForm());
     setImgUrl(null);
     setImgSearchOpen(false);

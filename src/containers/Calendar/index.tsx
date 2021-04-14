@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import dayjs from 'dayjs';
 import { useDispatch } from 'react-redux';
 import { showTicketInputForm } from '../TicketInput/actions';
 import MonthlyCalendar from './MonthlyCalendar';
+import { getAllTicketsRequest } from './actions';
 import { S } from './styles';
 
 function Calendar() {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllTicketsRequest());
+  }, [dispatch]);
 
   const openTicketForm = (schedule: string) => {
     dispatch(showTicketInputForm(schedule));
