@@ -1,4 +1,6 @@
 import React from 'react';
+import SideMenu from '../../../containers/SideMenu';
+import TicketInput from '../../../containers/TicketInput';
 import { S } from './styles';
 
 type DefaultLayoutProps = {
@@ -8,6 +10,8 @@ type DefaultLayoutProps = {
 function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
     <div css={S.outerLayout}>
+      <SideMenu />
+      <TicketInput />
       <div css={S.innerLayout}>{children}</div>
     </div>
   );

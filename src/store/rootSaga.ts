@@ -1,6 +1,8 @@
 import { all } from 'redux-saga/effects';
+import { calendarSaga } from '../containers/Calendar/saga';
 import { signInSaga } from '../containers/SignIn/saga';
+import { ticketInputSaga } from '../containers/TicketInput/saga';
 
 export default function* rootSaga() {
-  yield all([signInSaga()]);
+  yield all([signInSaga(), ticketInputSaga(), calendarSaga()]);
 }

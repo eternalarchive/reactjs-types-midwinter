@@ -46,10 +46,18 @@ export const customStyles = css`
 
   a {
     text-decoration: none;
+    :visited {
+      color: inherit;
+    }
   }
 
   button {
     border: 0;
+    cursor: pointer;
+  }
+
+  ul {
+    padding-left: 0;
   }
 
   .a11y-hidden {
