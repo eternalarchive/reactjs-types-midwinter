@@ -49,12 +49,13 @@ export const S = {
         }
         &.grayed {
           color: #e7e7e7;
+          cursor: default;
           img {
             opacity: 0.3;
             filter: grayscale(100%);
           }
         }
-        &:hover:not(.indicator) {
+        &:hover:not(.indicator):not(.grayed) {
           border-radius: 5px;
           box-shadow: 0 0 10px 0 rgba(93, 93, 93, 0.15);
         }

@@ -20,13 +20,9 @@ function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
     setDate(newDate);
   };
 
-  const renderPoster = (current: dayjs.Dayjs, isToday: string) => {
+  const renderPoster = (current: dayjs.Dayjs) => {
     if (!calendarDatas) {
-      return (
-        <span className={`text`}>{`${current.format('D')}\n${
-          isToday && 'TODAY'
-        }`}</span>
-      );
+      return <span className={`text`}>{`${current.format('D')}`}</span>;
     }
 
     const ticketDatas = calendarDatas.filter(
@@ -46,9 +42,7 @@ function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
             ),
           )
         ) : (
-          <span className={`text`}>{`${current.format('D')}\n${
-            isToday && 'TODAY'
-          }`}</span>
+          <span className={`text`}>{`${current.format('D')}`}</span>
         )}
       </>
     );
@@ -84,7 +78,7 @@ function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
                   key={current.format('YYYYMMDD')}
                   onClick={() => openTicketForm(current.format())}
                 >
-                  {renderPoster(current, isToday)}
+                  {renderPoster(current)}
                 </div>
               );
             })}
