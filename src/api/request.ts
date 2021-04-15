@@ -11,9 +11,9 @@ export const postSignInApi = (data: TsignInInfo) =>
 export const postAddTicketApi = (data: TsubmitTicketDatas) =>
   post(PATHS.ADD_TICKET_PATH, data);
 
-export const getAllTicketsApi = () => {
-  return get(PATHS.GET_ALL_TICKETS_PATH);
-};
+export const getAllTicketsApi = () => get(PATHS.GET_ALL_TICKETS_PATH);
+
+export const getUpcomingTicketsApi = () => get(PATHS.GET_UPCOMING_TICKETS_PATH);
 
 // [[ google ]]
 export const getGoogleImageApi = (searchQuery: string) =>

@@ -1,11 +1,14 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { getAllTicketsApi } from '../../api/request';
-import { GET_ALL_TICKETS_REQUEST } from './constants';
-import { getAllTicketsSuccess } from './actions';
+import { getAllTicketsApi, getUpcomingTicketsApi } from '../../api/request';
+import {
+  GET_ALL_TICKETS_REQUEST,
+  GET_UPCOMING_TICKETS_REQUEST,
+} from './constants';
+import { getAllTicketsSuccess, getUpcomingTicketsSuccess } from './actions';
 
 export interface TticketDatas {
   poster: string;
-  category?: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
+  category: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
   title: string;
   schedule: string;
   place?: string;
@@ -27,6 +30,14 @@ function* getAllTickets(): Generator<unknown, void, TcalendarResDatas> {
   } catch (error) {}
 }
 
+function* getUpcomingTickets(): Generator<unknown, void, any> {
+  try {
+    const response = yield call(getUpcomingTicketsApi);
+    yield put(getUpcomingTicketsSuccess(response.data));
+  } catch (error) {}
+}
+
 export function* calendarSaga() {
   yield takeLatest(GET_ALL_TICKETS_REQUEST, getAllTickets);
+  yield takeLatest(GET_UPCOMING_TICKETS_REQUEST, getUpcomingTickets);
 }

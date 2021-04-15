@@ -60,6 +60,10 @@ export const customStyles = css`
     padding-left: 0;
   }
 
+  p {
+    margin: 0;
+  }
+
   .a11y-hidden {
     overflow: hidden;
     position: absolute;
