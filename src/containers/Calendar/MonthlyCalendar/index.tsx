@@ -12,8 +12,8 @@ interface MonthlyCalendarProps {
 
 function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
   const [date, setDate] = useState(dayjs());
-  const calendarDatas = useSelector(
-    (state: rootState) => state.calendar.calendarDatas,
+  const calendarTickets = useSelector(
+    (state: rootState) => state.calendar.calendarDatas.calendarTickets,
   );
 
   const changeDate = (newDate: React.SetStateAction<dayjs.Dayjs>) => {
@@ -21,11 +21,11 @@ function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
   };
 
   const renderPoster = (current: dayjs.Dayjs) => {
-    if (!calendarDatas) {
+    if (!calendarTickets) {
       return <span className={`text`}>{`${current.format('D')}`}</span>;
     }
 
-    const ticketDatas = calendarDatas.filter(
+    const ticketDatas = calendarTickets.filter(
       (data: { schedule: string }) =>
         dayjs(data.schedule).format('YYYYMMDD') === current.format('YYYYMMDD'),
     );

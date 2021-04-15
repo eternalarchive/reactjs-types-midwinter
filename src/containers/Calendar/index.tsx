@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { useDispatch } from 'react-redux';
 import { showTicketInputForm } from '../TicketInput/actions';
 import MonthlyCalendar from './MonthlyCalendar';
+import UpcomingTickets from './UpcomingTickets';
 import { getAllTicketsRequest } from './actions';
 import { S } from './styles';
 
@@ -28,6 +29,9 @@ function Calendar() {
         >
           티켓 추가
         </button>
+      </section>
+      <section css={S.section}>
+        <UpcomingTickets />
       </section>
     </>
   );
