@@ -12,8 +12,11 @@ export const postAddTicketApi = (data: TsubmitTicketDatas) =>
   post(PATHS.ADD_TICKET_PATH, data);
 
 export const getAllTicketsApi = () => get(PATHS.GET_ALL_TICKETS_PATH);
-
 export const getUpcomingTicketsApi = () => get(PATHS.GET_UPCOMING_TICKETS_PATH);
+
+export const getStatisticsActorApi = () => get(PATHS.GET_STATISTICS_ACTOR_PATH);
+export const getStatisticsViewApi = (year: number) =>
+  get(`${PATHS.GET_STATISTICS_VIEW_PATH}/${year}`);
 
 // [[ google ]]
 export const getGoogleImageApi = (searchQuery: string) =>
