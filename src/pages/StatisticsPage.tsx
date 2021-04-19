@@ -1,10 +1,12 @@
 import React from 'react';
+import LoggedLayout from '../components/Common/LoggedLayout';
+import Statistics from '../containers/Statistics';
 
 function StatisticsPage() {
   return (
-    <div>
-      <p>Statistics</p>
-    </div>
+    <LoggedLayout>
+      <Statistics />
+    </LoggedLayout>
   );
 }
 

@@ -5,6 +5,8 @@ export const SIGN_IN_PATH = `/auth/login`;
 export const ADD_TICKET_PATH = `/tickets`;
 export const GET_ALL_TICKETS_PATH = `/tickets`;
 export const GET_UPCOMING_TICKETS_PATH = `/tickets/upcoming_list`;
+export const GET_STATISTICS_ACTOR_PATH = `/tickets/statistics/actor`;
+export const GET_STATISTICS_VIEW_PATH = `/tickets/statistics/view`;
 
 //[[ google image search ]]
 const {
