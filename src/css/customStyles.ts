@@ -60,6 +60,10 @@ export const customStyles = css`
     padding-left: 0;
   }
 
+  li {
+    list-style: none;
+  }
+
   p {
     margin: 0;
   }
