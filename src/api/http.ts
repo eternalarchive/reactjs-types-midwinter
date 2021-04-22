@@ -71,6 +71,20 @@ export const post = (path: string, data: unknown) => {
   });
 };
 
+export const patch = (path: string, data: unknown) => {
+  const instance = axiosInstance();
+  return new Promise((resolve, reject) => {
+    instance
+      .patch(path, data)
+      .then(response => {
+        resolve(response);
+      })
+      .catch(error => {
+        reject(handleError(error.response.status));
+      });
+  });
+};
+
 //[[ google image search ]]
 const axiosGoogleInstance = () => {
   const params = {

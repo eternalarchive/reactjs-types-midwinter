@@ -4,6 +4,7 @@ import sideMenu from '../containers/SideMenu/reducer';
 import ticketInput from '../containers/TicketInput/reducer';
 import calendar from '../containers/Calendar/reducer';
 import statistics from '../containers/Statistics/reducer';
+import tickets from '../containers/Tickets/reducer';
 
 const rootReducer = combineReducers({
   signIn,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   ticketInput,
   calendar,
   statistics,
+  tickets,
 });
 
 export default rootReducer;
