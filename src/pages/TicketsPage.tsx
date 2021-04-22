@@ -1,10 +1,12 @@
 import React from 'react';
+import LoggedLayout from '../components/Common/LoggedLayout';
+import Tickets from '../containers/Tickets';
 
 function TicketsPage() {
   return (
-    <div>
-      <p>Tickets</p>
-    </div>
+    <LoggedLayout>
+      <Tickets />
+    </LoggedLayout>
   );
 }
 

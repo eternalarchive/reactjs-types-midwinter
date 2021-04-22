@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import produce from 'immer';
 import { TypeActions } from './actions';
 import {
@@ -16,22 +17,22 @@ export interface Tposter {
 
 interface TformState {
   isOpen: boolean;
-  schedule: string | null;
-  posters: Tposter[] | null;
   loading: boolean;
+  posters: Tposter[] | null;
 }
 
 interface IinitialState {
   formState: TformState;
+  ticketState: any | null;
 }
 
 export const initialState: IinitialState = {
   formState: {
     isOpen: false,
-    schedule: null,
     posters: null,
     loading: false,
   },
+  ticketState: { isModify: false },
 };
 
 function ticketInput(state: IinitialState = initialState, action: TypeActions) {
@@ -40,12 +41,12 @@ function ticketInput(state: IinitialState = initialState, action: TypeActions) {
       case SHOW_TICKET_INPUT_FORM:
         document.body.style.overflow = 'hidden';
         draftState.formState.isOpen = true;
-        draftState.formState.schedule = action.schedule;
+        draftState.ticketState = action.data;
         break;
       case HIDE_TICKET_INPUT_FORM:
         document.body.style.overflow = '';
         draftState.formState.isOpen = false;
-        draftState.formState.schedule = null;
+        draftState.ticketState = { isModify: false };
         draftState.formState.posters = null;
         break;
       case POST_ADD_TICKET_REQUEST:

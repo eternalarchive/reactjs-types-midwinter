@@ -1,30 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import { rootState } from '../../store/rootReducer';
 import { CloseIcon } from '../../components/Svgs';
 import { getAllTicketsRequest } from '../Calendar/actions';
-import { hideTicketInputForm, postAddTicketRequest } from './actions';
+import { patchTicketDataRequest } from '../Tickets/actions';
 import PosterSearchInput from './PosterSearchInput';
+import { hideTicketInputForm, postAddTicketRequest } from './actions';
+import { CATEGORIES, CATEGORY } from './constants';
+import { TticketData } from '../Calendar/saga';
 import { S } from './styles';
 
-export interface TsubmitTicketDatas {
-  poster?: string;
-  category?: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
-  title: string;
-  schedule: string;
-  place?: string;
-  seat?: string;
-  price?: number;
-  casting?: string[];
-  discount_type?: string;
-  memo?: string;
-}
-
-export interface TinputTicketDatas {
+export interface TinputTicketData {
   poster: string;
-  category?: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
+  category: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
   title: string;
   schedule: string;
   place?: string;
@@ -37,11 +27,11 @@ export interface TinputTicketDatas {
 
 function TicketInput() {
   const dispatch = useDispatch();
-  const schedule = useSelector(
-    (state: rootState) => state.ticketInput.formState.schedule,
+  const ticketState = useSelector(
+    (state: rootState) => state.ticketInput.ticketState,
   );
-  const isOpen = useSelector(
-    (state: rootState) => state.ticketInput.formState.isOpen,
+  const { isOpen } = useSelector(
+    (state: rootState) => state.ticketInput.formState,
   );
 
   const [isImgSearchOpen, setImgSearchOpen] = useState<boolean>(false);
@@ -49,52 +39,55 @@ function TicketInput() {
 
   const { register, handleSubmit, reset } = useForm();
 
+  useEffect(() => {
+    const ticketInput = document.querySelector('#ticketInput');
+    ticketInput?.scrollTo(0, 0);
+  }, [isOpen]);
+
+  useEffect(() => {
+    reset({
+      category: ticketState.category || 'default',
+      title: ticketState.title || undefined,
+      schedule:
+        dayjs(ticketState.schedule).format('YYYY-MM-DDT20:00') || undefined,
+      place: ticketState.place || undefined,
+      seat: ticketState.seat || undefined,
+      price: ticketState.price || undefined,
+      casting: ticketState.casting ? ticketState.casting.join(', ') : undefined,
+      discount_type: ticketState.discount_type || undefined,
+      memo: ticketState.memo || undefined,
+    });
+  }, [reset, ticketState]);
+
   const handleImageClick = (link: string) => {
     setImgUrl(link);
   };
 
-  const onSubmit = (data: TinputTicketDatas) => {
-    const {
-      category,
-      title,
-      schedule,
-      place,
-      seat,
-      price,
-      casting,
-      discount_type,
-      memo,
-    } = data;
-    const submitDatas: TsubmitTicketDatas = {
+  const onSubmit = (data: TinputTicketData) => {
+    const { title, poster, price, casting } = data;
+    const submitDatas: TticketData = {
+      ...data,
       title: title.trim(),
-      schedule,
+      price: price ? +price : undefined,
+      casting: casting
+        ? casting.split(',').map(person => person.trim())
+        : undefined,
     };
-    if (imgUrl) {
-      submitDatas.poster = imgUrl;
-    }
-    if (category) {
-      submitDatas.category = category;
-    }
-    if (place) {
-      submitDatas.place = place.trim();
-    }
-    if (seat) {
-      submitDatas.seat = seat.trim();
-    }
-    if (price) {
-      submitDatas.price = +price.trim();
-    }
-    if (casting) {
-      submitDatas.casting = casting.split(',').map(person => person.trim());
-    }
-    if (discount_type) {
-      submitDatas.discount_type = discount_type;
-    }
-    if (memo) {
-      submitDatas.memo = memo;
+
+    if (imgUrl || poster) {
+      submitDatas.poster = imgUrl || poster;
     }
 
-    dispatch(postAddTicketRequest(submitDatas));
+    if (price) {
+      submitDatas.price = +price;
+    }
+
+    if (ticketState.isModify) {
+      submitDatas._id = ticketState._id;
+      dispatch(patchTicketDataRequest(submitDatas));
+    } else {
+      dispatch(postAddTicketRequest(submitDatas));
+    }
     closeForm();
   };
 
@@ -113,12 +106,12 @@ function TicketInput() {
         setImgSearchOpen={setImgSearchOpen}
         handleImageClick={handleImageClick}
       />
-      <section css={S.section(isOpen)}>
+      <section css={S.section(isOpen)} id="ticketInput">
         <h2 css={S.h2}>TICKET</h2>
         <div css={S.photoArea}>
-          {imgUrl ? (
+          {imgUrl || (ticketState.isModify && ticketState.poster) ? (
             <img
-              src={imgUrl}
+              src={imgUrl || ticketState.poster}
               alt="poster"
               css={S.poster}
               onClick={() => setImgSearchOpen(true)}
@@ -134,11 +127,14 @@ function TicketInput() {
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <select css={S.textInput} {...register('category')}>
-            <option value="default">카테고리를 선택해주세요.</option>
-            <option value="musical">뮤지컬</option>
-            <option value="theater">연극</option>
-            <option value="music-theater">음악극</option>
-            <option value="etc">기타</option>
+            <option value="default" disabled hidden>
+              관람하는 극의 장르는 무엇인가요?
+            </option>
+            {CATEGORIES.map(category => (
+              <option key={category} value={category}>
+                {CATEGORY[category]}
+              </option>
+            ))}
           </select>
           <input
             placeholder="제목을 입력해주세요."
@@ -148,9 +144,6 @@ function TicketInput() {
           <input
             type="datetime-local"
             placeholder="관람일을 선택해주세요."
-            defaultValue={
-              schedule ? dayjs(schedule).format('YYYY-MM-DDT20:00') : undefined
-            }
             css={S.textInput}
             {...register('schedule', { required: true })}
           />
