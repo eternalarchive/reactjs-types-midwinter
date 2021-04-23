@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Global } from '@emotion/react';
 import { sanitize } from 'emotion-sanitize';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -12,18 +15,22 @@ import { rootReducer, rootSaga } from './store';
 import { customStyles } from './css/customStyles';
 
 const sagaMiddleware = createSagaMiddleware();
+const persistConfig = { key: 'root', storage };
 
 const store = createStore(
-  rootReducer,
+  persistReducer(persistConfig, rootReducer),
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
+const persistor = persistStore(store);
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Global styles={[sanitize, customStyles]} />
-      <App />
+      <PersistGate persistor={persistor}>
+        <Global styles={[sanitize, customStyles]} />
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
