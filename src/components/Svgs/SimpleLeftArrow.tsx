@@ -10,9 +10,9 @@ function SimpleLeftArrow() {
     >
       <path
         fill="none"
-        stroke="#000"
+        stroke="#464d52"
         strokeLinecap="round"
-        strokeWidth="1.5px"
+        strokeWidth="2.5px"
         d="M3273.321 191.595l-5 5.5 5 5.5"
         transform="translate(-3267.308 -190.535)"
       />

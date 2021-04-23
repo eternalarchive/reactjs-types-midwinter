@@ -10,9 +10,11 @@ type DefaultLayoutProps = {
 function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
     <div css={S.outerLayout}>
-      <SideMenu />
       <TicketInput />
-      <div css={S.innerLayout}>{children}</div>
+      <div css={S.innerLayout}>
+        <SideMenu />
+        {children}
+      </div>
     </div>
   );
 }

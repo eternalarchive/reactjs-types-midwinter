@@ -19,12 +19,7 @@ function UpcomingTickets() {
   return (
     <>
       <section css={S.section}>
-        <h2 css={S.sectionTitle}>
-          다가오는 일정{' '}
-          <span role="img" aria-label="rocket">
-            🚀
-          </span>
-        </h2>
+        <h2 css={S.sectionTitle}>다가오는 일정</h2>
         <UpcomingTicket upcomingTickets={upcomingTickets} />
         <Link to="tickets">
           <button css={S.viewAll}>View all</button>

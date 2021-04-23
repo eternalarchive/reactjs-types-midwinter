@@ -12,22 +12,27 @@ export const S = {
   viewAll: css`
     padding: 10px 20px;
     font-size: 16px;
-    color: #fff;
-    background-color: #000;
+    color: #fcfcfc;
+    background-color: #464d52;
     border-radius: 20px;
     position: absolute;
     top: 0;
     right: 0;
+    transition: all 0.2s;
+    :hover {
+      background-color: #121212;
+    }
   `,
   more: css`
     display: block;
     width: 150px;
     height: 40px;
-    background-color: #fff;
+    background-color: #fcfcfc;
     border: 1px solid #d1d1d1;
     border-radius: 20px;
-    color: #7f7f7f;
+    color: #868686;
     margin: 30px auto 0 auto;
+    transition: all 0.2s;
     :hover {
       box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
     }

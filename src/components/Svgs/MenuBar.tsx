@@ -7,6 +7,7 @@ function MenuBar() {
       width="24"
       height="21"
       viewBox="0 0 24 21"
+      fill="#464d52"
     >
       <g>
         <path

@@ -6,7 +6,7 @@ export const S = {
     margin: 20px 0;
     padding: 10px 0;
     background-color: rgba(56, 125, 255, 0.8);
-    color: #fff;
+    color: #fcfcfc;
     border-radius: 10px;
   `,
 };

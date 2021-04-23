@@ -3,23 +3,42 @@ import { css } from '@emotion/react';
 export const S = {
   calendar: css`
     user-select: none;
+    padding-bottom: 20px;
+  `,
+  dateInfo: css`
+    order: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+  `,
+  year: css`
+    order: 1;
+    margin-left: 5px;
+    font-size: 14px;
+  `,
+  title: css`
+    order: 0;
+    font-size: 24px;
+    margin: 0;
+  `,
+  prevMonthButton: css`
+    order: 0;
+  `,
+  nextMonthButton: css`
+    order: 2;
   `,
   head: css`
     display: flex;
-    flex-direction: column;
-    padding: 12px 20px;
+    align-items: center;
+    justify-content: space-around;
+    text-transform: uppercase;
+    padding: 20px;
     button {
-      display: inline-flex;
       background: transparent;
-    }
-    .year {
-      margin: 0;
-      font-weight: 700;
-    }
-    h3.title {
-      font-size: 24px;
-      font-weight: 700;
-      margin: 0;
+      outline: none;
+      width: 20px;
+      display: block;
     }
   `,
   body: css`
@@ -30,9 +49,7 @@ export const S = {
         cursor: initial;
         .box {
           font-weight: 700;
-        }
-        .box:hover {
-          background-color: #fff;
+          height: 50px;
         }
       }
       .box {
@@ -40,12 +57,11 @@ export const S = {
         display: inline-flex;
         width: calc(100% / 7);
         height: 80px;
-        font-size: 14px;
-        &:first-of-type {
-          color: #ff7777;
-        }
+        font-size: 12px;
+        transition: all 0.2s;
+        &:first-of-type,
         &:last-child {
-          color: #588dff;
+          color: #2b6bff;
         }
         &.grayed {
           color: #e7e7e7;
@@ -77,6 +93,7 @@ export const S = {
           border-radius: 5px;
           display: inline-flex;
           justify-content: center;
+          align-items: center;
           width: 100%;
           padding: 5px 0;
         }
