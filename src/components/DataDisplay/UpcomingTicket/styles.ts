@@ -15,6 +15,7 @@ export const S = {
     border-radius: 10px;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
     cursor: pointer;
+    transition: all 0.2s;
     :hover {
       background-color: #fafcff;
     }

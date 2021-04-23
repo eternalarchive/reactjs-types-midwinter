@@ -1,17 +1,28 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import media from '../../../libs/MediaQuery';
+
+const popupAni = keyframes`
+  from {
+    margin-top: 50px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+`;
 
 export const S = {
   imgSearchPopup: (isImgSearchOpen: boolean) => css`
     display: ${isImgSearchOpen ? 'block' : 'none'};
   `,
-  overlay: css`
-    position: fixed;
+  overlay: (isImgSearchOpen: boolean) => css`
+    position: ${isImgSearchOpen ? 'fixed' : 'none'};
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(246, 246, 246, 0.5);
     z-index: 150;
   `,
   section: css`
@@ -22,8 +33,10 @@ export const S = {
     padding: 20px;
     border-radius: 10px;
     overflow: hidden;
-    background-color: #fff;
+    background-color: #fcfcfc;
     z-index: 200;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
+    animation: ${popupAni} 0.2s linear;
     ${media.mobile`
       width: 100%;
       max-width: 430px;
@@ -33,7 +46,7 @@ export const S = {
   textInput: css`
     display: block;
     width: 100%;
-    background-color: #fff;
+    background-color: #fcfcfc;
     border: 0px;
     border-bottom: 2px solid #d0d0d0;
     padding: 15px 0;
@@ -45,7 +58,7 @@ export const S = {
       font-size: 22px;
     }
     :focus {
-      border-bottom-color: black;
+      border-bottom-color: #464d52;
     }
   `,
   ul: css`
@@ -71,8 +84,7 @@ export const S = {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
     font-size: 14px;
-    color: #666;
+    color: #868686;
   `,
 };

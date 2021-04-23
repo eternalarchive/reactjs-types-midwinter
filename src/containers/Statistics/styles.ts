@@ -7,7 +7,7 @@ export const S = {
   tabItem: (isActive: boolean) => css`
     display: inline-block;
     font-size: 28px;
-    color: ${isActive ? 'black' : '#b2b2b2'};
+    color: ${isActive ? '#464d52' : '#b2b2b2'};
     font-weight: ${isActive ? '700' : 'normal'};
     margin-left: 20px;
     cursor: pointer;
@@ -15,7 +15,7 @@ export const S = {
       content: '#';
     }
     :hover {
-      color: black;
+      color: #464d52;
       font-weight: 700;
     }
   `,

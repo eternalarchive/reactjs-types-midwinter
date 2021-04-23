@@ -42,6 +42,9 @@ export const customStyles = css`
     font-display: swap;
     font-size: 12px;
     margin: 0;
+    color: #464d52;
+    background-color: rgba(246, 246, 246, 0.5);
+    box-shadow: 0 0 15px 0 rgb(0, 0, 0, 0.06);
   }
 
   a {

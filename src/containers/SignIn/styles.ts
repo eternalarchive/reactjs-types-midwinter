@@ -8,7 +8,7 @@ export const S = {
   textInput: css`
     display: block;
     width: 100%;
-    background-color: #fff;
+    background-color: #fcfcfc;
     border: 0px;
     border-bottom: 2px solid #d0d0d0;
     padding: 15px 0;
@@ -20,7 +20,7 @@ export const S = {
       font-size: 22px;
     }
     :focus {
-      border-bottom-color: black;
+      border-bottom-color: #464d52;
     }
   `,
   errorMsg: css`
@@ -28,7 +28,7 @@ export const S = {
     font-size: 14px;
   `,
   redirectionText: css`
-    color: #000;
+    color: #464d52;
   `,
   redirection: css`
     margin-top: 60px;
@@ -37,9 +37,13 @@ export const S = {
     display: block;
     width: 100%;
     font-size: 16px;
-    color: #fff;
-    background-color: #000;
+    color: #fcfcfc;
+    background-color: #464d52;
     margin-top: 20px;
     padding: 15px 0;
+    transition: all 0.2s;
+    :hover {
+      background-color: #121212;
+    }
   `,
 };

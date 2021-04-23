@@ -10,9 +10,9 @@ function SimpleRightArrow() {
     >
       <path
         fill="none"
-        stroke="#000"
+        stroke="#464d52"
         strokeLinecap="round"
-        strokeWidth="1.5px"
+        strokeWidth="2.5px"
         d="M3268.321 191.595l5 5.5-5 5.5"
         transform="translate(-3267.262 -190.535)"
       />
