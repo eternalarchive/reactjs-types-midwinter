@@ -2,8 +2,9 @@ import React, { useState, useEffect, createRef } from 'react';
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../store/rootReducer';
-import SearchIcon from '../../components/Svgs/SearchIcon';
+import { SearchIcon } from '../../components/Svgs/index';
 import Ticket from '../../components/DataDisplay/Ticket';
+import EmptyBox from '../../components/DataDisplay/EmptyBox';
 import { showTicketInputForm } from '../TicketInput/actions';
 import { TticketData } from '../Calendar/saga';
 import { getAllTicketsRequest } from '../Calendar/actions';
@@ -67,15 +68,19 @@ function Tickets() {
         />
         <SearchIcon css={S.searchIcon} />
       </label>
-      <div css={S.ticket}>
-        {filterTickets?.map((ticket: TticketData) => (
-          <Ticket
-            key={ticket._id}
-            ticket={ticket}
-            changeTicketInfo={changeTicketInfo}
-          />
-        ))}
-      </div>
+      {filterTickets?.length !== 0 ? (
+        <div css={S.ticket}>
+          {filterTickets?.map((ticket: TticketData) => (
+            <Ticket
+              key={ticket._id}
+              ticket={ticket}
+              changeTicketInfo={changeTicketInfo}
+            />
+          ))}
+        </div>
+      ) : (
+        <EmptyBox />
+      )}
     </section>
   );
 }
