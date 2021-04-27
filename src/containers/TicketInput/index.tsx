@@ -64,7 +64,7 @@ function TicketInput() {
   };
 
   const onSubmit = (data: TinputTicketData) => {
-    const { title, poster, price, casting } = data;
+    const { title, price, casting } = data;
     const submitDatas: TticketData = {
       ...data,
       title: title.trim(),
@@ -74,8 +74,8 @@ function TicketInput() {
         : undefined,
     };
 
-    if (imgUrl || poster) {
-      submitDatas.poster = imgUrl || poster;
+    if (imgUrl || ticketState.poster) {
+      submitDatas.poster = imgUrl || ticketState.poster;
     }
 
     if (price) {

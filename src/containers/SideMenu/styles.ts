@@ -37,7 +37,31 @@ export const S = {
     background-color: rgba(246, 246, 246, 0.5);
     z-index: 150;
   `,
+  messageBox: css`
+    padding: 30px 0;
+    border-bottom: 1px solid #eee;
+  `,
+  messageText: css`
+    font-size: 20px;
+    margin: 20px 0;
+    span {
+      font-weight: 700;
+    }
+  `,
+  logoutButton: css`
+    color: #2b6bff;
+    font-weight: 700;
+    background-color: #ccdeff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    :hover {
+      background-color: #b8d1ff;
+    }
+  `,
   menu: css`
+    padding: 0 20px;
+    margin-top: 30px;
     & ~ & {
       margin-top: 30px;
     }

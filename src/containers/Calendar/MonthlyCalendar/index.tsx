@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import weekOfYear from 'dayjs/plugin/weekOfYear';
 import { useSelector } from 'react-redux';
 import { SimpleRightArrow, SimpleLeftArrow } from '../../../components/Svgs';
 import { rootState } from '../../../store/rootReducer';
+import { TticketModifyData } from '..';
+import CalendarItem from './CalendarItem';
 import { S } from './styles';
 
 interface MonthlyCalendarProps {
-  openTicketForm: (schedule: string) => void;
+  openTicketForm: (ticketData: TticketModifyData) => void;
 }
 
 function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
@@ -20,83 +21,18 @@ function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
     setDate(newDate);
   };
 
-  const renderPoster = (current: dayjs.Dayjs) => {
-    if (!calendarTickets) {
-      return <span className={`text`}>{`${current.format('D')}`}</span>;
-    }
-
-    const ticketDatas = calendarTickets.filter(
-      (data: { schedule: string }) =>
-        dayjs(data.schedule).format('YYYYMMDD') === current.format('YYYYMMDD'),
-    );
-    return (
-      <>
-        {ticketDatas.length !== 0 ? (
-          ticketDatas.map(
-            (ticket: { title: string; schedule: string; poster: string }) => (
-              <img
-                key={`${ticket.title} ${ticket.schedule}`}
-                src={ticket.poster}
-                alt={`${ticket.title} ${ticket.schedule}`}
-              />
-            ),
-          )
-        ) : (
-          <span className={`text`}>{`${current.format('D')}`}</span>
-        )}
-      </>
-    );
-  };
-
-  const generate = () => {
-    const today = dayjs();
-    dayjs.extend(weekOfYear);
-    const startWeek = date.startOf('month').week();
-    const endWeek =
-      date.endOf('month').week() === 1 ? 53 : date.endOf('month').week();
-
-    const calendar = [];
-    for (let week = startWeek; week <= endWeek; week++) {
-      calendar.push(
-        <div className="row" key={week}>
-          {Array(7)
-            .fill(0)
-            .map((n, i) => {
-              const current = date
-                .week(week)
-                .startOf('week')
-                .add(n + i, 'day');
-              const isToday =
-                today.format('YYYYMMDD') === current.format('YYYYMMDD')
-                  ? 'today'
-                  : '';
-              const isGrayed =
-                current.format('MM') === date.format('MM') ? '' : 'grayed';
-              return (
-                <div
-                  className={`box ${isGrayed} ${isToday}`}
-                  key={current.format('YYYYMMDD')}
-                  onClick={() => openTicketForm(current.format())}
-                >
-                  {renderPoster(current)}
-                </div>
-              );
-            })}
-        </div>,
-      );
-    }
-    return calendar;
-  };
-
   return (
     <div css={S.calendar}>
       <div css={S.head}>
-        <p className="year">{date.format('YYYY')}</p>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <h3 className="title">{date.format('MMMM')}</h3>
+        <div css={S.dateInfo}>
+          <p css={S.year}>{date.format('YYYY')}</p>
+          <h3 css={S.title}>{date.format('MMMM')}</h3>
+        </div>
+        <div css={S.buttonBox}>
           <button onClick={() => changeDate(date.subtract(1, 'month'))}>
             <SimpleLeftArrow />
           </button>
+          <span css={S.line} />
           <button onClick={() => changeDate(date.add(1, 'month'))}>
             <SimpleRightArrow />
           </button>
@@ -126,7 +62,11 @@ function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
             <span className="text week">SAT</span>
           </div>
         </div>
-        {generate()}
+        <CalendarItem
+          date={date}
+          calendarTickets={calendarTickets}
+          openTicketForm={openTicketForm}
+        />
       </div>
     </div>
   );

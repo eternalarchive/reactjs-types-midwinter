@@ -4,13 +4,24 @@ export const S = {
   calendar: css`
     user-select: none;
     padding-bottom: 20px;
+    border-bottom: 1px solid #e7e7e7;
+  `,
+  head: css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px 15px 15px;
+    button {
+      background: transparent;
+      outline: none;
+      width: 20px;
+      display: block;
+    }
   `,
   dateInfo: css`
-    order: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70%;
   `,
   year: css`
     order: 1;
@@ -19,27 +30,18 @@ export const S = {
   `,
   title: css`
     order: 0;
-    font-size: 24px;
+    font-size: 32px;
+    text-transform: uppercase;
     margin: 0;
   `,
-  prevMonthButton: css`
-    order: 0;
-  `,
-  nextMonthButton: css`
-    order: 2;
-  `,
-  head: css`
+  buttonBox: css`
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-transform: uppercase;
-    padding: 20px;
-    button {
-      background: transparent;
-      outline: none;
-      width: 20px;
-      display: block;
-    }
+    width: 20%;
+    justify-content: space-between;
+  `,
+  line: css`
+    width: 1px;
+    background-color: #e7e7e7;
   `,
   body: css`
     .row {
@@ -52,17 +54,22 @@ export const S = {
           height: 50px;
         }
       }
+      .indicator {
+        &:first-of-type {
+          color: #ff7777;
+        }
+        &:last-child {
+          color: #007fff;
+        }
+      }
       .box {
         position: relative;
         display: inline-flex;
         width: calc(100% / 7);
         height: 80px;
         font-size: 12px;
-        transition: all 0.2s;
-        &:first-of-type,
-        &:last-child {
-          color: #2b6bff;
-        }
+        transition: box-shadow 0.2s;
+        padding: 1px;
         &.grayed {
           color: #e7e7e7;
           cursor: default;
@@ -77,23 +84,34 @@ export const S = {
         }
         &.today {
           span.text {
+            align-items: center;
+            flex-direction: column;
             font-weight: 700;
+            font-size: 16px;
             border-radius: 5px;
-            background-color: #f7fbff;
+            background-color: #fcfcfc;
+            border: 1px solid #007fff;
             text-align: center;
+            ::after {
+              font-weight: 400;
+              font-size: 10px;
+              content: 'TODAY';
+              margin-top: 5px;
+            }
           }
         }
         img {
           width: 100%;
           height: 100%;
           overflow: hidden;
-          border-radius: 5px;
+          :nth-of-type(n + 2) {
+            margin-left: 1px;
+          }
         }
         span.text {
           border-radius: 5px;
           display: inline-flex;
           justify-content: center;
-          align-items: center;
           width: 100%;
           padding: 5px 0;
         }

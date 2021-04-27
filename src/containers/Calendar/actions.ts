@@ -4,7 +4,7 @@ import {
   GET_UPCOMING_TICKETS_REQUEST,
   GET_UPCOMING_TICKETS_SUCCESS,
 } from './constants';
-import { TticketDatas } from './saga';
+import { TticketData } from './saga';
 
 export type TypeActions = ReturnType<
   | typeof getAllTicketsRequest
@@ -17,7 +17,7 @@ export const getAllTicketsRequest = () => ({
   type: GET_ALL_TICKETS_REQUEST,
 });
 
-export const getAllTicketsSuccess = (data: TticketDatas[]) => ({
+export const getAllTicketsSuccess = (data: TticketData[]) => ({
   type: GET_ALL_TICKETS_SUCCESS,
   data,
 });
