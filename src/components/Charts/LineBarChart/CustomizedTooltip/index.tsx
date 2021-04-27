@@ -1,9 +1,9 @@
-import dayjs from 'dayjs';
 import React from 'react';
+import dayjs from 'dayjs';
 import { S } from './styles';
 
 function CustomizedTooltip({ payload }: any) {
-  if (!payload || !payload[0]) return null;
+  if (!payload) return null;
   return (
     <div css={S.tooltip}>
       <p css={S.tooltipText}>

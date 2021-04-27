@@ -2,7 +2,7 @@ import React from 'react';
 import { S } from './styles';
 
 function CustomizedTooltip({ label, payload }: any) {
-  if (!label && !payload[0]) return null;
+  if (!label || !payload) return null;
   return (
     <div css={S.tooltip}>
       <span css={S.tooltipText}>
