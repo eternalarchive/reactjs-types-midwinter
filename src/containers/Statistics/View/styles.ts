@@ -16,7 +16,7 @@ export const S = {
       }
     }
     :first-of-type {
-      border-bottom: 2px solid #464d52;
+      border-bottom: 2px solid #131313;
       font-weight: 700;
     }
     :hover:not(:first-of-type) {

@@ -1,7 +1,9 @@
 import { css } from '@emotion/react';
 
 export const S = {
-  section: css``,
+  section: css`
+    min-height: calc(100vh - 130px);
+  `,
   search: css`
     display: block;
     width: 100%;
@@ -17,7 +19,7 @@ export const S = {
       font-size: 18px;
     }
     :focus {
-      border-bottom-color: #464d52;
+      border-bottom-color: #131313;
     }
   `,
   label: css`
