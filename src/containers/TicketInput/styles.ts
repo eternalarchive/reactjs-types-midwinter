@@ -44,14 +44,6 @@ export const S = {
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
     overflow: hidden;
   `,
-  addPhotoButton: css`
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #387dff;
-    background-color: #cddeff;
-    border-radius: 20px;
-  `,
   poster: css`
     width: 100%;
     cursor: pointer;
@@ -71,7 +63,7 @@ export const S = {
       font-size: 22px;
     }
     :focus {
-      border-bottom-color: #464d52;
+      border-bottom-color: #131313;
     }
   `,
   saveButton: css`
@@ -79,12 +71,12 @@ export const S = {
     width: 100%;
     font-size: 16px;
     color: #fcfcfc;
-    background-color: #464d52;
+    background-color: #131313;
     margin-top: 50px;
     padding: 15px 0;
     transition: all 0.2s;
     :hover {
-      background-color: #121212;
+      background-color: #303030;
     }
   `,
   closeButton: css`

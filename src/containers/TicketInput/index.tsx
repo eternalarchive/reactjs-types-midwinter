@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import { rootState } from '../../store/rootReducer';
 import { CloseIcon } from '../../components/Svgs';
+import BlueButton from '../../components/Buttons/BlueButton';
 import { getAllTicketsRequest } from '../Calendar/actions';
 import { patchTicketDataRequest } from '../Tickets/actions';
-import PosterSearchInput from './PosterSearchInput';
+import { TticketData } from '../Calendar/saga';
 import { hideTicketInputForm, postAddTicketRequest } from './actions';
 import { CATEGORIES, CATEGORY } from './constants';
-import { TticketData } from '../Calendar/saga';
+import PosterSearchInput from './PosterSearchInput';
 import { S } from './styles';
 
 export interface TinputTicketData {
@@ -117,12 +118,10 @@ function TicketInput() {
               onClick={() => setImgSearchOpen(true)}
             />
           ) : (
-            <button
-              css={S.addPhotoButton}
-              onClick={() => setImgSearchOpen(true)}
-            >
-              사진 가져오기
-            </button>
+            <BlueButton
+              text="사진 가져오기"
+              handleClick={() => setImgSearchOpen(true)}
+            />
           )}
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
