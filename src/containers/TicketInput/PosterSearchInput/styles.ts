@@ -27,9 +27,9 @@ export const S = {
   `,
   section: css`
     position: fixed;
-    top: calc(50% - 250px);
+    top: calc(50% - 270px);
     width: 430px;
-    height: 500px;
+    height: 550px;
     padding: 20px;
     border-radius: 10px;
     overflow: hidden;
@@ -42,6 +42,9 @@ export const S = {
       max-width: 430px;
       min-width: 320px;
     `}
+  `,
+  title: css`
+    font-size: 24px;
   `,
   textInput: css`
     display: block;
@@ -58,11 +61,11 @@ export const S = {
       font-size: 22px;
     }
     :focus {
-      border-bottom-color: #464d52;
+      border-bottom-color: #131313;
     }
   `,
   ul: css`
-    height: calc(100% - 90px);
+    height: calc(100% - 160px);
     overflow: scroll;
   `,
   poster: css`
@@ -82,9 +85,21 @@ export const S = {
   `,
   empty: css`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
-    color: #868686;
+    text-align: center;
+    font-size: 16px;
+    color: #848484;
+    margin-top: 20%;
+  `,
+  tip: css`
+    font-weight: 700;
+    font-size: 20px;
+    color: #387eff;
+    margin: 20px 0;
+    ::before {
+      content: '#';
+    }
   `,
 };

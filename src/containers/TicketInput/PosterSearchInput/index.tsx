@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { CloseIcon } from '../../../components/Svgs';
+import { BackArrowIcon } from '../../../components/Svgs';
 import { rootState } from '../../../store/rootReducer';
 import { getGoogleImgRequest } from '../actions';
 import { S } from './styles';
@@ -45,7 +45,7 @@ function PosterSearchInput({
       />
       <div css={S.imgSearchPopup(isImgSearchOpen)}>
         <section css={S.section} role="dialog">
-          <h3 className="a11y-hidden">포스터 검색하기</h3>
+          <h2 css={S.title}>이미지 검색하기</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
@@ -75,14 +75,16 @@ function PosterSearchInput({
             </ul>
           ) : (
             <div css={S.empty}>
-              <span role="img" aria-label="인공위성">
-                🛰
-              </span>
-              포스터를 검색해주세요
+              <p css={S.tip}>Tip</p>
+              <p>
+                직사각형 형태의 이미지가
+                <br />
+                달력에 잘 어울려요!
+              </p>
             </div>
           )}
           <button css={S.closeButton} onClick={() => setImgSearchOpen(false)}>
-            <CloseIcon />
+            <BackArrowIcon />
           </button>
         </section>
       </div>
