@@ -13,14 +13,14 @@ export const S = {
     padding: 10px 20px;
     font-size: 16px;
     color: #fcfcfc;
-    background-color: #464d52;
+    background-color: #131313;
     border-radius: 20px;
     position: absolute;
     top: 0;
     right: 0;
     transition: all 0.2s;
     :hover {
-      background-color: #121212;
+      background-color: #303030;
     }
   `,
   more: css`
@@ -36,5 +36,17 @@ export const S = {
     :hover {
       box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
     }
+  `,
+  dayContainer: css`
+    & ~ & {
+      margin-top: 25px;
+    }
+  `,
+  ticketsBlock: css`
+    margin-top: 10px;
+  `,
+  date: css`
+    font-size: 16px;
+    font-weight: 700;
   `,
 };
