@@ -7,7 +7,7 @@ function CloseIcon() {
       width="15"
       height="15"
       viewBox="0 0 15 15"
-      fill="#464d52"
+      fill="#131313"
     >
       <g>
         <path

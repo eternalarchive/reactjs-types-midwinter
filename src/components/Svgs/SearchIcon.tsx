@@ -16,7 +16,7 @@ function SearchIcon(props: any) {
         />
         <g
           fill="#fcfcfc"
-          stroke="#464d52"
+          stroke="#131313"
           strokeWidth="2px"
           transform="translate(-748 -58) translate(748 58)"
         >

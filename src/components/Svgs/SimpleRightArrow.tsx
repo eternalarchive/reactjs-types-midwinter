@@ -10,7 +10,7 @@ function SimpleRightArrow() {
     >
       <path
         fill="none"
-        stroke="#464d52"
+        stroke="#131313"
         strokeLinecap="round"
         strokeWidth="2.5px"
         d="M3268.321 191.595l5 5.5-5 5.5"
