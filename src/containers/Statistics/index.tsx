@@ -27,7 +27,8 @@ function Statistics() {
   };
 
   return (
-    <div>
+    <section css={S.section}>
+      <h2 className="a11y-hidden">통계</h2>
       <ul css={S.tab}>
         <li
           css={S.tabItem(clickedTab === 'actor')}
@@ -49,7 +50,7 @@ function Statistics() {
       ) : (
         <View data={viewCounts} />
       )}
-    </div>
+    </section>
   );
 }
 

@@ -13,7 +13,7 @@ interface ViewProps {
 function View({ data }: ViewProps) {
   return (
     <section css={S.section}>
-      <h2 className="a11y-hidden">월별 관람 횟수, 사용 금액 통계</h2>
+      <h3 className="a11y-hidden">월별 관람 횟수, 사용 금액 통계</h3>
       <TopInfo
         firstTitle="2021 관람 횟수"
         firstContent={`${
