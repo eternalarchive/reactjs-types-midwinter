@@ -6,7 +6,8 @@ import {
 } from './constants';
 import { getAllTicketsSuccess, getUpcomingTicketsSuccess } from './actions';
 
-export interface TticketDatas {
+export interface TticketData {
+  _id?: string;
   poster: string;
   category: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
   title: string;
@@ -20,7 +21,7 @@ export interface TticketDatas {
 }
 
 interface TcalendarResDatas {
-  data: TticketDatas[];
+  data: TticketData[];
 }
 
 function* getAllTickets(): Generator<unknown, void, TcalendarResDatas> {
@@ -30,7 +31,7 @@ function* getAllTickets(): Generator<unknown, void, TcalendarResDatas> {
   } catch (error) {}
 }
 
-function* getUpcomingTickets(): Generator<unknown, void, any> {
+function* getUpcomingTickets(): Generator<unknown, void, TcalendarResDatas> {
   try {
     const response = yield call(getUpcomingTicketsApi);
     yield put(getUpcomingTicketsSuccess(response.data));

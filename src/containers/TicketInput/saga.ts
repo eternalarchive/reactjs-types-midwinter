@@ -6,16 +6,16 @@ import {
 } from './constants';
 import { postAddTicketSuccess, getGoogleImgSuccess } from './actions';
 import { Tposter } from './reducer';
-import { TsubmitTicketDatas } from '.';
+import { TticketData } from '../Calendar/saga';
 
 interface postAddTicketProps {
-  data: TsubmitTicketDatas;
+  data: TticketData;
   type: string;
 }
 
 interface TpostAddTicketResDatas {
   data: {
-    data: TsubmitTicketDatas;
+    data: TticketData;
   };
 }
 

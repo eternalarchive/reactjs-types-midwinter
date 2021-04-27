@@ -6,16 +6,16 @@ import {
   GET_UPCOMING_TICKETS_REQUEST,
   GET_UPCOMING_TICKETS_SUCCESS,
 } from './constants';
-import { TticketDatas } from './saga';
+import { TticketData } from './saga';
 
 interface TcalendarDatas {
   loading: boolean;
-  calendarTickets: TticketDatas[] | null;
+  calendarTickets: TticketData[] | null;
 }
 
 export interface TupcomingTickets {
-  today: [] | TticketDatas[];
-  others: [] | TticketDatas[];
+  today: [] | TticketData[];
+  others: [] | TticketData[];
 }
 
 interface TupcomingDatas {
