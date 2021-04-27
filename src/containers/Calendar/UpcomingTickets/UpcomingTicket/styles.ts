@@ -1,14 +1,6 @@
 import { css } from '@emotion/react';
 
 export const S = {
-  dayContainer: css`
-    & ~ & {
-      margin-top: 25px;
-    }
-  `,
-  ticketsBlock: css`
-    margin-top: 10px;
-  `,
   ticketArea: css`
     display: flex;
     padding: 20px;
@@ -22,10 +14,6 @@ export const S = {
     & ~ & {
       margin-top: 10px;
     }
-  `,
-  date: css`
-    font-size: 16px;
-    font-weight: 700;
   `,
   infoBox: css`
     order: 2;
