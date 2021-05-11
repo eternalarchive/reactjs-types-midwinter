@@ -1,8 +1,23 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+const ticketAni = keyframes`
+  from {
+    margin-top: 50px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 30;
+    opacity: 1;
+  }
+`;
 
 export const S = {
   section: css`
     min-height: calc(100vh - 130px);
+  `,
+  title: css`
+    font-size: 24px;
+    margin: 0;
   `,
   search: css`
     display: block;
@@ -36,5 +51,6 @@ export const S = {
     flex-direction: column;
     align-items: center;
     margin: 30px 0;
+    animation: ${ticketAni} 0.2s linear;
   `,
 };

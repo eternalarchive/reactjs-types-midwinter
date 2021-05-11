@@ -13,6 +13,7 @@ function Header() {
 
   return (
     <header css={S.header}>
+      <h1 css={S.title}>Midwinter</h1>
       <button css={S.menuButton} onClick={openSideMenu}>
         <MenuBar />
       </button>

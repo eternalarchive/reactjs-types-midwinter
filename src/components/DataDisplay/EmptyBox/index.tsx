@@ -13,11 +13,11 @@ function EmptyBox() {
 
   return (
     <div css={S.empty}>
-      <span role="img" aria-label="느낌표" css={S.emptyEmoji}>
-        ❗️
+      <span role="img" aria-label="티켓" css={S.emptyEmoji}>
+        🎟
       </span>
       <p css={S.emptyText}>
-        관람 기록이 없습니다
+        티켓이 없습니다
         <br />
         아래 버튼을 눌러 관람 기록을 추가해주세요!
       </p>
