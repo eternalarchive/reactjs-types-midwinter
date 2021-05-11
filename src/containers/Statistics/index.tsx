@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../store/rootReducer';
+import Loading from '../../components/Common/Loading';
 import { getStatisticsActorRequest, getStatisticsViewRequest } from './actions';
 import Actor from './Actor';
 import View from './View';
@@ -8,23 +9,28 @@ import { S } from './styles';
 
 function Statistics() {
   const dispatch = useDispatch();
-  const actorCounts = useSelector(
-    (state: rootState) => state.statistics.actorDatas.actorCounts,
+  const { loading, actorCounts } = useSelector(
+    (state: rootState) => state.statistics.actorDatas,
   );
   const viewCounts = useSelector(
     (state: rootState) => state.statistics.viewDatas.viewCounts,
   );
 
-  const [clickedTab, setClickedTab] = useState<string>('actor');
+  const [clickedTab, setClickedTab] = useState<'actor' | 'view'>('actor');
 
   useEffect(() => {
     dispatch(getStatisticsActorRequest());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(getStatisticsViewRequest(2021));
   }, [dispatch]);
 
-  const changeTab = (tab: string) => {
+  const changeTab = (tab: 'actor' | 'view') => {
     setClickedTab(tab);
   };
+
+  if (loading) return <Loading />;
 
   return (
     <section css={S.section}>

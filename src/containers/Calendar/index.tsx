@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { rootState } from '../../store/rootReducer';
+import Loading from '../../components/Common/Loading';
 import { showTicketInputForm } from '../TicketInput/actions';
 import MonthlyCalendar from './MonthlyCalendar';
 import UpcomingTickets from './UpcomingTickets';
-import { getAllTicketsRequest } from './actions';
+import { getAllTicketsRequest, getUpcomingTicketsRequest } from './actions';
 import { S } from './styles';
 
 export interface TticketModifyData {
@@ -23,14 +25,23 @@ export interface TticketModifyData {
 
 function Calendar() {
   const dispatch = useDispatch();
+  const loading = useSelector(
+    (state: rootState) => state.calendar.calendarDatas.loading,
+  );
 
   useEffect(() => {
     dispatch(getAllTicketsRequest());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getUpcomingTicketsRequest());
+  }, [dispatch]);
+
   const openTicketForm = (ticketData: TticketModifyData) => {
     dispatch(showTicketInputForm(ticketData));
   };
+
+  if (loading) return <Loading />;
 
   return (
     <>

@@ -5,6 +5,7 @@ import { rootState } from '../../store/rootReducer';
 import { SearchIcon } from '../../components/Svgs/index';
 import Ticket from '../../components/DataDisplay/Ticket';
 import EmptyBox from '../../components/DataDisplay/EmptyBox';
+import Loading from '../../components/Common/Loading';
 import { showTicketInputForm } from '../TicketInput/actions';
 import { TticketData } from '../Calendar/saga';
 import { getAllTicketsRequest } from '../Calendar/actions';
@@ -12,8 +13,8 @@ import { S } from './styles';
 
 function Tickets() {
   const dispatch = useDispatch();
-  const calendarTickets = useSelector(
-    (state: rootState) => state.calendar.calendarDatas.calendarTickets,
+  const { loading, calendarTickets } = useSelector(
+    (state: rootState) => state.calendar.calendarDatas,
   );
   const [tickets, setTickets] = useState<TticketData[] | []>([]);
   const [filterTickets, setFilterTickets] = useState<TticketData[] | []>([]);
@@ -54,9 +55,11 @@ function Tickets() {
     dispatch(showTicketInputForm({ ...ticket, isModify: true }));
   };
 
+  if (loading) return <Loading />;
+
   return (
     <section css={S.section}>
-      <h2 className="a11y-hidden">티켓 목록</h2>
+      <h2 css={S.title}>티켓 목록</h2>
       <label htmlFor="search" css={S.label}>
         <span className="a11y-hidden">티켓 검색하기</span>
         <input
