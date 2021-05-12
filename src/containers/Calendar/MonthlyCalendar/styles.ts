@@ -82,7 +82,7 @@ export const S = {
           border-radius: 5px;
           box-shadow: 0 0 10px 0 rgba(93, 93, 93, 0.15);
         }
-        &.today {
+        &.today:not(.grayed) {
           span.text {
             align-items: center;
             flex-direction: column;
@@ -104,8 +104,12 @@ export const S = {
           width: 100%;
           height: 100%;
           overflow: hidden;
+          transition: transform 0.2s;
           :nth-of-type(n + 2) {
             margin-left: 1px;
+          }
+          &:hover {
+            transform: scale(1.05);
           }
         }
         span.text {

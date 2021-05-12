@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, delay, put, takeLatest } from 'redux-saga/effects';
 import { getAllTicketsApi, getUpcomingTicketsApi } from '../../api/request';
 import {
   GET_ALL_TICKETS_REQUEST,
@@ -27,6 +27,7 @@ interface TcalendarResDatas {
 function* getAllTickets(): Generator<unknown, void, TcalendarResDatas> {
   try {
     const response = yield call(getAllTicketsApi);
+    yield delay(50);
     yield put(getAllTicketsSuccess(response.data));
   } catch (error) {}
 }

@@ -6,7 +6,6 @@ export const handleError = (error: number) => {
     case 401:
       localStorage.clear();
       if (window.location.pathname !== '/login') {
-        alert('로그인 시간이 경과되었습니다.');
         window.location.replace('/login');
       }
       break;

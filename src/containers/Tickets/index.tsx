@@ -21,6 +21,10 @@ function Tickets() {
   const searchInputRef = createRef<any>();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (!calendarTickets) dispatch(getAllTicketsRequest());
   }, [calendarTickets, dispatch]);
 

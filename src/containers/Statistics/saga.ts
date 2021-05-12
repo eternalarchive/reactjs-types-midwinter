@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, delay, put, takeLatest } from 'redux-saga/effects';
 import { getStatisticsActorApi, getStatisticsViewApi } from '../../api/request';
 import {
   GET_STATISTICS_ACTOR_REQUEST,
@@ -23,6 +23,7 @@ interface getStatisticsProps {
 function* getStatisticsActor(): Generator<unknown, void, TactorResDatas> {
   try {
     const response = yield call(getStatisticsActorApi);
+    yield delay(50);
     yield put(getStatisticsActorSuccess(response.data));
   } catch (error) {}
 }
