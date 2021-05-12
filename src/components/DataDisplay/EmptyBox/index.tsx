@@ -21,7 +21,7 @@ function EmptyBox() {
         <br />
         아래 버튼을 눌러 관람 기록을 추가해주세요!
       </p>
-      <BlueButton text="티켓 추가" handleClick={openTicketForm} />
+      <BlueButton handleClick={openTicketForm}>티켓 추가</BlueButton>
     </div>
   );
 }

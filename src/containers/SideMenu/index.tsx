@@ -35,7 +35,7 @@ function SideMenu() {
             <br />
             오늘도 즐거운 관극!
           </p>
-          <BlueButton text="로그아웃" handleClick={logout} />
+          <BlueButton handleClick={logout}>로그아웃</BlueButton>
         </div>
         <ul>
           <li css={S.menu}>

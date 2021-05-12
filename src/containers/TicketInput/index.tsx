@@ -5,7 +5,6 @@ import dayjs from 'dayjs';
 import { rootState } from '../../store/rootReducer';
 import { CloseIcon } from '../../components/Svgs';
 import BlueButton from '../../components/Buttons/BlueButton';
-import { getAllTicketsRequest } from '../Calendar/actions';
 import { patchTicketDataRequest } from '../Tickets/actions';
 import { TticketData } from '../Calendar/saga';
 import { hideTicketInputForm, postAddTicketRequest } from './actions';
@@ -65,6 +64,7 @@ function TicketInput() {
   };
 
   const onSubmit = (data: TinputTicketData) => {
+    if (!imgUrl && !ticketState.poster) return alert('사진을 추가해주세요.');
     const { title, price, casting } = data;
     const submitDatas: TticketData = {
       ...data,
@@ -93,7 +93,6 @@ function TicketInput() {
   };
 
   const closeForm = () => {
-    dispatch(getAllTicketsRequest());
     dispatch(hideTicketInputForm());
     setImgUrl(null);
     setImgSearchOpen(false);
@@ -118,10 +117,9 @@ function TicketInput() {
               onClick={() => setImgSearchOpen(true)}
             />
           ) : (
-            <BlueButton
-              text="사진 가져오기"
-              handleClick={() => setImgSearchOpen(true)}
-            />
+            <BlueButton handleClick={() => setImgSearchOpen(true)}>
+              사진 가져오기
+            </BlueButton>
           )}
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
