@@ -44,16 +44,6 @@ function SignIn() {
           {...register('password', { required: true })}
         />
         {error && <p css={S.errorMsg}>{errorMsg}</p>}
-        <div css={S.redirection}>
-          <Link to="register">
-            <p css={S.redirectionText}>
-              <span role="img" aria-label="sprout">
-                🌱
-              </span>{' '}
-              아직 회원가입 전이라면?
-            </p>
-          </Link>
-        </div>
         <button css={S.loginButton}>로그인</button>
       </form>
     </section>

@@ -68,16 +68,6 @@ function SideMenu() {
               </span>
             </Link>
           </li>
-          <li css={S.menu}>
-            <Link to="admin">
-              <span
-                css={S.menuText(window.location.pathname === '/admin')}
-                onClick={closeSideMenu}
-              >
-                계정 설정
-              </span>
-            </Link>
-          </li>
         </ul>
         <button css={S.close} onClick={closeSideMenu}>
           <CloseIcon />

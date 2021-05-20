@@ -61,10 +61,7 @@ export const S = {
   `,
   menu: css`
     padding: 0 20px;
-    margin-top: 30px;
-    & ~ & {
-      margin-top: 45px;
-    }
+    margin-top: 50px;
   `,
   menuText: (active: boolean) => css`
     font-size: 24px;

@@ -27,12 +27,6 @@ export const S = {
     color: #ff7171;
     font-size: 14px;
   `,
-  redirectionText: css`
-    color: #131313;
-  `,
-  redirection: css`
-    margin-top: 60px;
-  `,
   loginButton: css`
     display: block;
     width: 100%;
