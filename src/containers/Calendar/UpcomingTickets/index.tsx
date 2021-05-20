@@ -32,22 +32,26 @@ function UpcomingTickets() {
           <EmptyBox />
         ) : (
           <>
-            <div css={S.dayContainer}>
-              <p css={S.date}>{`오늘(${dayjs().format('D')}일)`}</p>
-              <ul css={S.ticketsBlock}>
-                {upcomingTickets?.today.map((ticket: TticketData) => (
-                  <UpcomingTicket ticket={ticket} key={ticket._id} />
-                ))}
-              </ul>
-            </div>
-            <div css={S.dayContainer}>
-              <p css={S.date}>관람 예정</p>
-              <ul css={S.ticketsBlock}>
-                {upcomingTickets?.others.map((ticket: TticketData) => (
-                  <UpcomingTicket ticket={ticket} key={ticket._id} />
-                ))}
-              </ul>
-            </div>
+            {upcomingTickets?.today.length !== 0 && (
+              <div css={S.dayContainer}>
+                <p css={S.date}>{`오늘(${dayjs().format('D')}일)`}</p>
+                <ul css={S.ticketsBlock}>
+                  {upcomingTickets?.today.map((ticket: TticketData) => (
+                    <UpcomingTicket ticket={ticket} key={ticket._id} />
+                  ))}
+                </ul>
+              </div>
+            )}
+            {upcomingTickets?.others.length !== 0 && (
+              <div css={S.dayContainer}>
+                <p css={S.date}>관람 예정</p>
+                <ul css={S.ticketsBlock}>
+                  {upcomingTickets?.others.map((ticket: TticketData) => (
+                    <UpcomingTicket ticket={ticket} key={ticket._id} />
+                  ))}
+                </ul>
+              </div>
+            )}
           </>
         )}
         <Link to="tickets">
