@@ -6,6 +6,8 @@ import {
   POST_ADD_TICKET_SUCCESS,
   GET_SEARCH_POSTER_REQUEST,
   GET_SEARCH_POSTER_SUCCESS,
+  DELETE_TICKET_REQUEST,
+  DELETE_TICKET_SUCCESS,
 } from './constants';
 import { Tposter } from './reducer';
 
@@ -16,6 +18,8 @@ export type TypeActions = ReturnType<
   | typeof postAddTicketSuccess
   | typeof getGoogleImgRequest
   | typeof getGoogleImgSuccess
+  | typeof deleteTicketRequest
+  | typeof deleteTicketSuccess
 >;
 
 export const showTicketInputForm = (data: any) => ({
@@ -44,4 +48,13 @@ export const getGoogleImgRequest = (searchQuery: string) => ({
 export const getGoogleImgSuccess = (posters: Tposter[]) => ({
   type: GET_SEARCH_POSTER_SUCCESS,
   posters,
+});
+
+export const deleteTicketRequest = (id: string) => ({
+  type: DELETE_TICKET_REQUEST,
+  id,
+});
+
+export const deleteTicketSuccess = () => ({
+  type: DELETE_TICKET_SUCCESS,
 });

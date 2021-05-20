@@ -8,6 +8,7 @@ export const GET_UPCOMING_TICKETS_PATH = `/tickets/upcoming_list`;
 export const GET_STATISTICS_ACTOR_PATH = `/tickets/statistics/actor`;
 export const GET_STATISTICS_VIEW_PATH = `/tickets/statistics/view`;
 export const PATCH_TICKET_DATA_PATH = `/tickets`;
+export const DELETE_TICKET_DATA_PATH = `/tickets`;
 
 //[[ google image search ]]
 const {

@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import produce from 'immer';
 import { TypeActions } from './actions';
 import {
@@ -8,6 +7,8 @@ import {
   POST_ADD_TICKET_SUCCESS,
   GET_SEARCH_POSTER_REQUEST,
   GET_SEARCH_POSTER_SUCCESS,
+  DELETE_TICKET_REQUEST,
+  DELETE_TICKET_SUCCESS,
 } from './constants';
 
 export interface Tposter {
@@ -61,6 +62,12 @@ function ticketInput(state: IinitialState = initialState, action: TypeActions) {
       case GET_SEARCH_POSTER_SUCCESS:
         draftState.formState.loading = false;
         draftState.formState.posters = action.posters;
+        break;
+      case DELETE_TICKET_REQUEST:
+        draftState.formState.loading = true;
+        break;
+      case DELETE_TICKET_SUCCESS:
+        draftState.formState.loading = false;
         break;
       default:
         return draftState;

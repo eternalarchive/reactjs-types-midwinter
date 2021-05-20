@@ -86,4 +86,17 @@ export const S = {
     right: 20px;
     padding: 10px;
   `,
+  deleteButton: css`
+    background-color: transparent;
+    position: absolute;
+    top: 22px;
+    right: 60px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.2s;
+    :hover {
+      color: #ff7777;
+    }
+  `,
 };

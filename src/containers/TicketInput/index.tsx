@@ -222,6 +222,11 @@ function TicketInput() {
         <button css={S.closeButton} onClick={closeForm}>
           <CloseIcon />
         </button>
+        {ticketState.isModify && (
+          <button css={S.deleteButton} onClick={deleteTicket}>
+            티켓 삭제
+          </button>
+        )}
       </section>
     </>
   );

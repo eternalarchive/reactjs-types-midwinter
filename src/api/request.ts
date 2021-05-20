@@ -1,7 +1,7 @@
 import * as PATHS from './paths';
 import { TsignInInfo } from '../containers/SignIn/saga';
 import { TticketData } from '../containers/Calendar/saga';
-import { authPost, post, get, patch, imgGet } from './http';
+import { authPost, post, get, patch, imgGet, remove } from './http';
 
 // [[ auth ]]
 export const postSignInApi = (data: TsignInInfo) =>
@@ -20,6 +20,8 @@ export const getStatisticsViewApi = (year: number) =>
 
 export const patchTicketDataApi = (data: TticketData) =>
   patch(`${PATHS.PATCH_TICKET_DATA_PATH}/${data._id}`, data);
+export const deleteTicketApi = (id: string) =>
+  remove(`${PATHS.DELETE_TICKET_DATA_PATH}/${id}`);
 
 // [[ google ]]
 export const getGoogleImageApi = (searchQuery: string) =>
