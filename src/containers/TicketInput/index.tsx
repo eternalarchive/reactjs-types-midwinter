@@ -1,16 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import { rootState } from '../../store/rootReducer';
 import { CloseIcon } from '../../components/Svgs';
 import BlueButton from '../../components/Buttons/BlueButton';
 import { patchTicketDataRequest } from '../Tickets/actions';
 import { TticketData } from '../Calendar/saga';
-import { hideTicketInputForm, postAddTicketRequest } from './actions';
+import {
+  deleteTicketRequest,
+  hideTicketInputForm,
+  postAddTicketRequest,
+} from './actions';
 import { CATEGORIES, CATEGORY } from './constants';
 import PosterSearchInput from './PosterSearchInput';
 import { S } from './styles';
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    borderBottom: '2px solid #d0d0d0',
+    '&:hover': {
+      borderBottomColor: '#131313',
+    },
+  },
+  textField: {
+    fontSize: '22px',
+    margin: '10px 0',
+    color: '#131313',
+  },
+}));
 
 export interface TinputTicketData {
   poster: string;
@@ -37,7 +57,8 @@ function TicketInput() {
   const [isImgSearchOpen, setImgSearchOpen] = useState<boolean>(false);
   const [imgUrl, setImgUrl] = useState<string | null>(null);
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, control } = useForm();
+  const classes = useStyles();
 
   useEffect(() => {
     const ticketInput = document.querySelector('#ticketInput');
@@ -49,7 +70,7 @@ function TicketInput() {
       category: ticketState.category || 'default',
       title: ticketState.title || undefined,
       schedule:
-        dayjs(ticketState.schedule).format('YYYY-MM-DDT20:00') || undefined,
+        dayjs(ticketState.schedule).format('YYYY-MM-DDTHH:mm') || undefined,
       place: ticketState.place || undefined,
       seat: ticketState.seat || undefined,
       price: ticketState.price || undefined,
@@ -99,6 +120,13 @@ function TicketInput() {
     reset();
   };
 
+  const deleteTicket = () => {
+    const isDeleteConfirm = window.confirm('티켓을 삭제하시겠어요?');
+    if (!isDeleteConfirm) return;
+    dispatch(deleteTicketRequest(ticketState._id));
+    closeForm();
+  };
+
   return (
     <>
       <PosterSearchInput
@@ -138,11 +166,25 @@ function TicketInput() {
             css={S.textInput}
             {...register('title', { required: true })}
           />
-          <input
-            type="datetime-local"
-            placeholder="관람일을 선택해주세요."
-            css={S.textInput}
-            {...register('schedule', { required: true })}
+          <Controller
+            name="schedule"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <TextField
+                id="datetime-local"
+                type="datetime-local"
+                css={S.textInput}
+                InputProps={{
+                  classes: {
+                    input: classes.textField,
+                  },
+                  disableUnderline: true,
+                }}
+                classes={{ root: classes.container }}
+                {...field}
+              />
+            )}
           />
           <input
             placeholder="관람 장소를 입력해주세요."

@@ -38,7 +38,9 @@ function CalendarItem({
         ) : (
           <span
             className={`text`}
-            onClick={() => openTicketForm({ schedule: current.format() })}
+            onClick={() =>
+              openTicketForm({ schedule: current.format('YYYY-MM-DDT20:00') })
+            }
           >{`${current.format('DD')}`}</span>
         )}
       </>
