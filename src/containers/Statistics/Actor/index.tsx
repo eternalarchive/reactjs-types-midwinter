@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import GrayLineButton from '../../../components/Buttons/GrayLineButton';
 import BasicBarChart from '../../../components/Charts/BasicBarChart';
 import BlueTextBox from '../../../components/DataDisplay/BlueTextBox';
 import EmptyBox from '../../../components/DataDisplay/EmptyBox';
@@ -12,30 +13,31 @@ interface ActorProps {
 
 function Actor({ data }: ActorProps) {
   const [chartData, setChartData] = useState<Tactor[] | []>([]);
+  const [tableData, setTableData] = useState<Tactor[] | []>([]);
   const [maxActor, setMaxActor] = useState<string>('');
   const [maxCount, setMaxCount] = useState<number>(0);
+  const [page, setPage] = useState<number>(10);
 
   useEffect(() => {
     if (!data || data.length === 0) return;
     const newData = [...data].sort((a, b) => b.count - a.count);
     setChartData(newData.slice(0, 10));
+    setMaxCount(newData[0].count);
+    setMaxActor(newData[0].actor);
   }, [data]);
 
   useEffect(() => {
     if (!data || data.length === 0) return;
-    setMaxCount(
-      Math.max(...data.map((actor: { count: number }) => actor.count), 0),
-    );
-  }, [data]);
+    const newData = [...data].sort((a, b) => b.count - a.count);
+    setTableData(newData.slice(0, page));
+  }, [data, page]);
 
-  useEffect(() => {
+  const morePage = () => {
     if (!data || data.length === 0) return;
-    if (maxCount === 0) return;
-    setMaxActor(
-      data.filter((actor: { count: number }) => actor.count === maxCount)[0]
-        .actor,
-    );
-  }, [data, maxCount]);
+    if (data.length > page) {
+      setPage(page + 10);
+    }
+  };
 
   return (
     <section css={S.section}>
@@ -56,15 +58,18 @@ function Actor({ data }: ActorProps) {
               <p>관람 횟수</p>
             </li>
             {data &&
-              [...data]
-                .sort((a, b) => b.count - a.count)
-                .map((actor: { actor: string; count: number }) => (
-                  <li key={actor.actor} css={S.listItem}>
-                    <p>{actor.actor}</p>
-                    <p>{actor.count}회</p>
-                  </li>
-                ))}
+              tableData.map((actor: { actor: string; count: number }) => (
+                <li key={actor.actor} css={S.listItem}>
+                  <p>{actor.actor}</p>
+                  <p>{actor.count}회</p>
+                </li>
+              ))}
           </ul>
+          {data && data.length > page && (
+            <GrayLineButton handleClick={morePage} css={S.button}>
+              더보기
+            </GrayLineButton>
+          )}
         </>
       ) : (
         <EmptyBox />

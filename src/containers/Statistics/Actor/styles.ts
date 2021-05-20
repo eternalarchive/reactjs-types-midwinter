@@ -17,4 +17,8 @@ export const S = {
       background-color: #f2f6ff;
     }
   `,
+  button: css`
+    display: block;
+    margin: 0 auto 20px auto;
+  `,
 };
