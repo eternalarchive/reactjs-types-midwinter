@@ -33,7 +33,7 @@ export const S = {
     font-size: 16px;
     color: #fcfcfc;
     background-color: #131313;
-    margin-top: 20px;
+    margin-top: 50px;
     padding: 15px 0;
     transition: all 0.2s;
     :hover {

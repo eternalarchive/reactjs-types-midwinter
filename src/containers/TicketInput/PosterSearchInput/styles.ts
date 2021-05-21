@@ -12,6 +12,17 @@ const popupAni = keyframes`
   }
 `;
 
+const imgAni = keyframes`
+  from {
+    margin-top: 20px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+`;
+
 export const S = {
   imgSearchPopup: (isImgSearchOpen: boolean) => css`
     display: ${isImgSearchOpen ? 'block' : 'none'};
@@ -67,10 +78,21 @@ export const S = {
   ul: css`
     height: calc(100% - 160px);
     overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   `,
   poster: css`
-    display: inline-block;
-    width: 33.3%;
+    display: inline-flex;
+    width: 32.5%;
+    height: 170px;
+    align-items: center;
+    border: 0.5px solid #d9d9d9;
+    background-color: #f7f7f7;
+    overflow: hidden;
+    margin-bottom: 5px;
+    transition: all 0.2s;
+    animation: ${imgAni} 0.3s linear;
   `,
   img: css`
     width: 100%;
