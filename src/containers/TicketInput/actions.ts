@@ -1,4 +1,4 @@
-import { TticketData } from '../Calendar/saga';
+import { TticketData } from '../Schedule/saga';
 import {
   SHOW_TICKET_INPUT_FORM,
   HIDE_TICKET_INPUT_FORM,

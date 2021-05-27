@@ -39,7 +39,7 @@ export const initialState: IinitialState = {
   },
 };
 
-export default function calendar(
+export default function schedule(
   state: IinitialState = initialState,
   action: TypeActions,
 ) {

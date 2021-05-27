@@ -1,6 +1,6 @@
 import * as PATHS from './paths';
 import { TsignInInfo } from '../containers/SignIn/saga';
-import { TticketData } from '../containers/Calendar/saga';
+import { TticketData } from '../containers/Schedule/saga';
 import { authPost, post, get, patch, imgGet, remove } from './http';
 
 // [[ auth ]]

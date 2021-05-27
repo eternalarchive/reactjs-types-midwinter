@@ -14,7 +14,7 @@ interface MonthlyCalendarProps {
 function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
   const [date, setDate] = useState(dayjs());
   const calendarTickets = useSelector(
-    (state: rootState) => state.calendar.calendarDatas.calendarTickets,
+    (state: rootState) => state.schedule.calendarDatas.calendarTickets,
   );
 
   const changeDate = (newDate: React.SetStateAction<dayjs.Dayjs>) => {

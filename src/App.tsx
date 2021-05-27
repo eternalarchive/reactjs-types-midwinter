@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
-import CalendarPage from './pages/CalendarPage';
+import SchedulePage from './pages/SchedulePage';
 import NotFoundPage from './pages/NotFoundPage';
 import SignInPage from './pages/SignInPage';
 import StatisticsPage from './pages/StatisticsPage';
@@ -14,7 +14,7 @@ function App() {
         <Route path="/login" component={SignInPage} exact />
         <Route path="/tickets" component={TicketsPage} exact />
         <Route path="/statistics" component={StatisticsPage} exact />
-        <Route path="/" component={CalendarPage} exact />
+        <Route path="/" component={SchedulePage} exact />
         <Route component={NotFoundPage} />
       </Switch>
     </Router>

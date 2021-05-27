@@ -7,14 +7,14 @@ import Ticket from '../../components/DataDisplay/Ticket';
 import EmptyBox from '../../components/DataDisplay/EmptyBox';
 import Loading from '../../components/Common/Loading';
 import { showTicketInputForm } from '../TicketInput/actions';
-import { TticketData } from '../Calendar/saga';
-import { getAllTicketsRequest } from '../Calendar/actions';
+import { TticketData } from '../Schedule/saga';
+import { getAllTicketsRequest } from '../Schedule/actions';
 import { S } from './styles';
 
 function Tickets() {
   const dispatch = useDispatch();
   const { loading, calendarTickets } = useSelector(
-    (state: rootState) => state.calendar.calendarDatas,
+    (state: rootState) => state.schedule.calendarDatas,
   );
   const [tickets, setTickets] = useState<TticketData[] | []>([]);
   const [filterTickets, setFilterTickets] = useState<TticketData[] | []>([]);

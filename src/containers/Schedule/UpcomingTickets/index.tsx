@@ -10,7 +10,7 @@ import { S } from './styles';
 
 function UpcomingTickets() {
   const upcomingTickets = useSelector(
-    (state: rootState) => state.calendar.upcomingDatas.upcomingTickets,
+    (state: rootState) => state.schedule.upcomingDatas.upcomingTickets,
   );
 
   const [isEmpty, setIsEmpty] = useState(false);

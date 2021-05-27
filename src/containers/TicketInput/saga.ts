@@ -7,8 +7,8 @@ import {
 import {
   getAllTicketsRequest,
   getUpcomingTicketsRequest,
-} from '../Calendar/actions';
-import { TticketData } from '../Calendar/saga';
+} from '../Schedule/actions';
+import { TticketData } from '../Schedule/saga';
 import {
   POST_ADD_TICKET_REQUEST,
   GET_SEARCH_POSTER_REQUEST,

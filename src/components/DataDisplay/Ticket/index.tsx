@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { TticketData } from '../../../containers/Calendar/saga';
+import { TticketData } from '../../../containers/Schedule/saga';
 import { CATEGORY } from '../../../containers/Tickets/constants';
 import { S } from './styles';
 

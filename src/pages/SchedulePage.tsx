@@ -1,13 +1,13 @@
 import React from 'react';
 import LoggedLayout from '../components/Common/LoggedLayout';
-import Calendar from '../containers/Calendar';
+import Schedule from '../containers/Schedule';
 
-function CalendarPage() {
+function SchedulePage() {
   return (
     <LoggedLayout>
-      <Calendar />
+      <Schedule />
     </LoggedLayout>
   );
 }
 
-export default CalendarPage;
+export default SchedulePage;

@@ -40,7 +40,7 @@ export const initialState: IinitialState = {
   },
 };
 
-export default function calendar(
+export default function statistics(
   state: IinitialState = initialState,
   action: TypeActions,
 ) {

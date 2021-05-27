@@ -23,10 +23,10 @@ export interface TticketModifyData {
   isModify?: boolean;
 }
 
-function Calendar() {
+function Schedule() {
   const dispatch = useDispatch();
   const loading = useSelector(
-    (state: rootState) => state.calendar.calendarDatas.loading,
+    (state: rootState) => state.schedule.calendarDatas.loading,
   );
 
   useEffect(() => {
@@ -54,4 +54,4 @@ function Calendar() {
   );
 }
 
-export default Calendar;
+export default Schedule;

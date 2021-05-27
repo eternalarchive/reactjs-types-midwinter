@@ -8,7 +8,7 @@ import { rootState } from '../../store/rootReducer';
 import { CloseIcon } from '../../components/Svgs';
 import BlueButton from '../../components/Buttons/BlueButton';
 import { patchTicketDataRequest } from '../Tickets/actions';
-import { TticketData } from '../Calendar/saga';
+import { TticketData } from '../Schedule/saga';
 import {
   deleteTicketRequest,
   hideTicketInputForm,
@@ -18,7 +18,7 @@ import { CATEGORIES, CATEGORY } from './constants';
 import PosterSearchInput from './PosterSearchInput';
 import { S } from './styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   container: {
     borderBottom: '2px solid #d0d0d0',
     '&:hover': {

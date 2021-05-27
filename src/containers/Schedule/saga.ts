@@ -20,11 +20,11 @@ export interface TticketData {
   memo?: string;
 }
 
-interface TcalendarResDatas {
+interface TscheduleResDatas {
   data: TticketData[];
 }
 
-function* getAllTickets(): Generator<unknown, void, TcalendarResDatas> {
+function* getAllTickets(): Generator<unknown, void, TscheduleResDatas> {
   try {
     const response = yield call(getAllTicketsApi);
     yield delay(50);
@@ -32,14 +32,14 @@ function* getAllTickets(): Generator<unknown, void, TcalendarResDatas> {
   } catch (error) {}
 }
 
-function* getUpcomingTickets(): Generator<unknown, void, TcalendarResDatas> {
+function* getUpcomingTickets(): Generator<unknown, void, TscheduleResDatas> {
   try {
     const response = yield call(getUpcomingTicketsApi);
     yield put(getUpcomingTicketsSuccess(response.data));
   } catch (error) {}
 }
 
-export function* calendarSaga() {
+export function* scheduleSaga() {
   yield takeLatest(GET_ALL_TICKETS_REQUEST, getAllTickets);
   yield takeLatest(GET_UPCOMING_TICKETS_REQUEST, getUpcomingTickets);
 }

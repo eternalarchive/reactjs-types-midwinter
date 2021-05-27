@@ -1,4 +1,4 @@
-import { TticketData } from '../Calendar/saga';
+import { TticketData } from '../Schedule/saga';
 import {
   PATCH_TICKET_DATA_REQUEST,
   PATCH_TICKET_DATA_SUCCESS,
