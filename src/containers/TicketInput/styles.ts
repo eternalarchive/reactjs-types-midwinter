@@ -80,11 +80,9 @@ export const S = {
     }
   `,
   closeButton: css`
-    background-color: transparent;
     position: absolute;
     top: 20px;
     right: 20px;
-    padding: 10px;
   `,
   deleteButton: css`
     background-color: transparent;

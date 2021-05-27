@@ -66,7 +66,7 @@ function Actor({ data }: ActorProps) {
               ))}
           </ul>
           {data && data.length > page && (
-            <GrayLineButton handleClick={morePage} css={S.button}>
+            <GrayLineButton onClick={morePage} css={S.button}>
               더보기
             </GrayLineButton>
           )}

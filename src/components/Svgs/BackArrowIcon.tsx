@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CloseIcon() {
+function BackArrowIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,4 +27,4 @@ function CloseIcon() {
   );
 }
 
-export default CloseIcon;
+export default BackArrowIcon;

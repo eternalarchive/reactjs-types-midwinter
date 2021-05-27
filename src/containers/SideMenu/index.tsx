@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import BlueButton from '../../components/Buttons/BlueButton';
-import { CloseIcon } from '../../components/Svgs';
+import CloseButton from '../../components/Buttons/CloseButton';
 import { rootState } from '../../store/rootReducer';
 import history from '../../utils/history';
 import { hideSideMenu } from './actions';
@@ -35,7 +35,7 @@ function SideMenu() {
             <br />
             오늘도 즐거운 관극!
           </p>
-          <BlueButton handleClick={logout}>로그아웃</BlueButton>
+          <BlueButton onClick={logout}>로그아웃</BlueButton>
         </div>
         <ul>
           <li css={S.menu}>
@@ -69,9 +69,7 @@ function SideMenu() {
             </Link>
           </li>
         </ul>
-        <button css={S.close} onClick={closeSideMenu}>
-          <CloseIcon />
-        </button>
+        <CloseButton css={S.closeButton} onClick={closeSideMenu} />
       </nav>
     </>
   );

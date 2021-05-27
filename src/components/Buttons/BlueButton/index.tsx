@@ -2,13 +2,13 @@ import React from 'react';
 import { S } from './styles';
 
 interface BlueButtonProps {
-  handleClick: (data?: boolean) => void;
+  onClick: () => void;
   children: React.ReactNode;
 }
 
-function BlueButton({ handleClick, children, ...rest }: BlueButtonProps) {
+function BlueButton({ children, ...rest }: BlueButtonProps) {
   return (
-    <button css={S.button} onClick={() => handleClick()} {...rest}>
+    <button css={S.button} {...rest}>
       {children}
     </button>
   );

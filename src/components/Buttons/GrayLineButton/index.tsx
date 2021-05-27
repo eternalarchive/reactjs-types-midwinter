@@ -2,17 +2,13 @@ import React from 'react';
 import { S } from './styles';
 
 interface GrayLineButtonProps {
-  handleClick?: () => void;
+  onClick: () => void;
   children: React.ReactNode;
 }
 
-function GrayLineButton({
-  handleClick,
-  children,
-  ...rest
-}: GrayLineButtonProps) {
+function GrayLineButton({ children, ...rest }: GrayLineButtonProps) {
   return (
-    <button onClick={handleClick} css={S.button} {...rest}>
+    <button css={S.button} {...rest}>
       {children}
     </button>
   );

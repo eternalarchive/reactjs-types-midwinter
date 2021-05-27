@@ -28,7 +28,7 @@ function NotFound() {
       <p css={S.notFound}>404</p>
       <p css={S.notFoundText}>STAY!!!</p>
       <p css={S.findPage}>{`길찾는 중... ${count}초`}</p>
-      <BlueButton handleClick={gohome} css={S.gohome}>
+      <BlueButton onClick={gohome} css={S.gohome}>
         빠른길 찾기
       </BlueButton>
     </section>

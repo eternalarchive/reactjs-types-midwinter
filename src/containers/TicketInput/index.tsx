@@ -5,8 +5,8 @@ import dayjs from 'dayjs';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { rootState } from '../../store/rootReducer';
-import { CloseIcon } from '../../components/Svgs';
 import BlueButton from '../../components/Buttons/BlueButton';
+import CloseButton from '../../components/Buttons/CloseButton';
 import { patchTicketDataRequest } from '../Tickets/actions';
 import { TticketData } from '../Schedule/saga';
 import {
@@ -113,6 +113,10 @@ function TicketInput() {
     closeForm();
   };
 
+  const openImgSearch = () => {
+    setImgSearchOpen(true);
+  };
+
   const closeForm = () => {
     dispatch(hideTicketInputForm());
     setImgUrl(null);
@@ -145,9 +149,7 @@ function TicketInput() {
               onClick={() => setImgSearchOpen(true)}
             />
           ) : (
-            <BlueButton handleClick={() => setImgSearchOpen(true)}>
-              사진 가져오기
-            </BlueButton>
+            <BlueButton onClick={openImgSearch}>사진 가져오기</BlueButton>
           )}
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -219,9 +221,7 @@ function TicketInput() {
           />
           <button css={S.saveButton}>저장하기</button>
         </form>
-        <button css={S.closeButton} onClick={closeForm}>
-          <CloseIcon />
-        </button>
+        <CloseButton css={S.closeButton} onClick={closeForm} />
         {ticketState.isModify && (
           <button css={S.deleteButton} onClick={deleteTicket}>
             티켓 삭제

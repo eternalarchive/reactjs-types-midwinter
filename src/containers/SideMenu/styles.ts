@@ -73,11 +73,9 @@ export const S = {
       margin-left: 20px;
     }
   `,
-  close: css`
+  closeButton: css`
     position: absolute;
     top: 20px;
     right: 20px;
-    background-color: transparent;
-    padding: 10px;
   `,
 };
