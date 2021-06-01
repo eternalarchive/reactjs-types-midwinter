@@ -21,22 +21,22 @@ export interface Tview {
 interface IinitialState {
   actorDatas: {
     loading: boolean;
-    actorCounts: Tactor[] | null;
+    actorStatistics: Tactor[] | null;
   };
   viewDatas: {
     loading: boolean;
-    viewCounts: Tview[] | null;
+    viewStatistics: Tview[] | null;
   };
 }
 
 export const initialState: IinitialState = {
   actorDatas: {
     loading: false,
-    actorCounts: null,
+    actorStatistics: null,
   },
   viewDatas: {
     loading: false,
-    viewCounts: null,
+    viewStatistics: null,
   },
 };
 
@@ -52,7 +52,7 @@ export default function statistics(
       case GET_STATISTICS_ACTOR_SUCCESS:
         draftState.actorDatas = {
           loading: false,
-          actorCounts: action.data,
+          actorStatistics: action.data,
         };
         break;
       case GET_STATISTICS_VIEW_REQUEST:
@@ -61,7 +61,7 @@ export default function statistics(
       case GET_STATISTICS_VIEW_SUCCESS:
         draftState.viewDatas = {
           loading: false,
-          viewCounts: action.data,
+          viewStatistics: action.data,
         };
         break;
       default:

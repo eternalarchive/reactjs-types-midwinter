@@ -2,7 +2,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import { TticketData } from '../../saga';
-import { TticketModifyData } from '../..';
+import { TticketModifyData } from '../../index';
 
 interface CalendarItemProps {
   date: dayjs.Dayjs;
@@ -39,7 +39,10 @@ function CalendarItem({
           <span
             className={`text`}
             onClick={() =>
-              openTicketForm({ schedule: current.format('YYYY-MM-DDT20:00') })
+              openTicketForm({
+                schedule: current.format('YYYY-MM-DDT20:00'),
+                isModify: false,
+              })
             }
           >{`${current.format('DD')}`}</span>
         )}

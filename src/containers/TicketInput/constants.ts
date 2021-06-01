@@ -25,3 +25,27 @@ export const CATEGORY = {
   theater: '연극',
   etc: '기타',
 };
+
+export const TICKETINPUTS = [
+  {
+    key: 'place',
+    placeholder: '관람장소를 입력해주세요',
+  },
+  {
+    key: 'seat',
+    placeholder: '좌석을 입력해주세요',
+  },
+  {
+    key: 'price',
+    type: 'number',
+    placeholder: '가격을 입력해주세요',
+  },
+  {
+    key: 'casting',
+    placeholder: '캐스팅을 ,로 구분하여 입력해주세요',
+  },
+  {
+    key: 'discount_type',
+    placeholder: '할인권종을 입력해주세요',
+  },
+];

@@ -13,7 +13,10 @@ export const initialState: IinitialState = {
   loading: false,
 };
 
-function tickets(state: IinitialState = initialState, action: TypeActions) {
+export default function tickets(
+  state: IinitialState = initialState,
+  action: TypeActions,
+) {
   return produce(state, draftState => {
     switch (action.type) {
       case PATCH_TICKET_DATA_REQUEST:
@@ -27,5 +30,3 @@ function tickets(state: IinitialState = initialState, action: TypeActions) {
     }
   });
 }
-
-export default tickets;

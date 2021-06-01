@@ -6,6 +6,7 @@ import CloseButton from '../../components/Buttons/CloseButton';
 import { rootState } from '../../store/rootReducer';
 import history from '../../utils/history';
 import { hideSideMenu } from './actions';
+import { MENU } from './constants';
 import { S } from './styles';
 
 function SideMenu() {
@@ -38,36 +39,18 @@ function SideMenu() {
           <BlueButton onClick={logout}>로그아웃</BlueButton>
         </div>
         <ul>
-          <li css={S.menu}>
-            <Link to="/">
-              <span
-                css={S.menuText(window.location.pathname === '/')}
-                onClick={closeSideMenu}
-              >
-                캘린더
-              </span>
-            </Link>
-          </li>
-          <li css={S.menu}>
-            <Link to="/statistics">
-              <span
-                css={S.menuText(window.location.pathname === '/statistics')}
-                onClick={closeSideMenu}
-              >
-                관람 분석
-              </span>
-            </Link>
-          </li>
-          <li css={S.menu}>
-            <Link to="/tickets">
-              <span
-                css={S.menuText(window.location.pathname === '/tickets')}
-                onClick={closeSideMenu}
-              >
-                티켓 보기
-              </span>
-            </Link>
-          </li>
+          {MENU.map(item => (
+            <li css={S.menu} key={item.key}>
+              <Link to={item.path}>
+                <span
+                  css={S.menuText(window.location.pathname === item.path)}
+                  onClick={closeSideMenu}
+                >
+                  {item.name}
+                </span>
+              </Link>
+            </li>
+          ))}
         </ul>
         <CloseButton css={S.closeButton} onClick={closeSideMenu} />
       </nav>

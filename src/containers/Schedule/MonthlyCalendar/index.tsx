@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { useSelector } from 'react-redux';
 import SimpleRightArrow from '../../../components/Svgs/SimpleRightArrow';
 import SimpleLeftArrow from '../../../components/Svgs/SimpleLeftArrow';
-import { rootState } from '../../../store/rootReducer';
-import { TticketModifyData } from '..';
+import { TticketModifyData } from '../index';
+import { TticketData } from '../saga';
 import CalendarItem from './CalendarItem';
 import { S } from './styles';
 
 interface MonthlyCalendarProps {
+  calendarTickets: TticketData[] | null;
   openTicketForm: (ticketData: TticketModifyData) => void;
 }
 
-function MonthlyCalendar({ openTicketForm }: MonthlyCalendarProps) {
+function MonthlyCalendar({
+  calendarTickets,
+  openTicketForm,
+}: MonthlyCalendarProps) {
   const [date, setDate] = useState(dayjs());
-  const calendarTickets = useSelector(
-    (state: rootState) => state.schedule.calendarDatas.calendarTickets,
-  );
 
   const changeDate = (newDate: React.SetStateAction<dayjs.Dayjs>) => {
     setDate(newDate);

@@ -11,20 +11,17 @@ interface ViewProps {
 }
 
 function View({ data }: ViewProps) {
+  const mostViewCount = data?.reduce((pre, cur) => pre + cur.count, 0) || 0;
+  const totalPrice =
+    data?.reduce((pre, cur) => pre + cur.total, 0).toLocaleString('ko-KR') || 0;
   return (
     <section css={S.section}>
       <h3 className="a11y-hidden">월별 관람 횟수, 사용 금액 통계</h3>
       <TopInfo
         firstTitle="2021 관람 횟수"
-        firstContent={`${
-          data?.reduce((pre, cur) => pre + cur.count, 0) || 0
-        }회`}
+        firstContent={`${mostViewCount}회`}
         secondTitle="2021 사용 금액"
-        secondContent={`${
-          data
-            ?.reduce((pre, cur) => pre + cur.total, 0)
-            .toLocaleString('ko-KR') || 0
-        }원`}
+        secondContent={`${totalPrice}원`}
       />
       <div>
         <BlueTextBox text={'2021년 관람 기록'} />
@@ -36,7 +33,7 @@ function View({ data }: ViewProps) {
           <p>금액</p>
           <p>관람 횟수</p>
         </li>
-        {data?.map((view: { month: string; count: number; total: number }) => (
+        {data?.map((view: Tview) => (
           <li key={view.month} css={S.listItem}>
             <p>{dayjs(view.month).format('M')}월</p>
             <p>{view.count}회</p>

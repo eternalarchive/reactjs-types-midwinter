@@ -24,7 +24,7 @@ interface TformState {
 
 interface IinitialState {
   formState: TformState;
-  ticketState: any | null;
+  ticketState: any;
 }
 
 export const initialState: IinitialState = {

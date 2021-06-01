@@ -9,11 +9,11 @@ import { S } from './styles';
 
 function Statistics() {
   const dispatch = useDispatch();
-  const { loading, actorCounts } = useSelector(
+  const { loading, actorStatistics } = useSelector(
     (state: rootState) => state.statistics.actorDatas,
   );
-  const viewCounts = useSelector(
-    (state: rootState) => state.statistics.viewDatas.viewCounts,
+  const viewStatistics = useSelector(
+    (state: rootState) => state.statistics.viewDatas.viewStatistics,
   );
 
   const [clickedTab, setClickedTab] = useState<'actor' | 'view'>('actor');
@@ -52,9 +52,9 @@ function Statistics() {
         </li>
       </ul>
       {clickedTab === 'actor' ? (
-        <Actor data={actorCounts} />
+        <Actor data={actorStatistics} />
       ) : (
-        <View data={viewCounts} />
+        <View data={viewStatistics} />
       )}
     </section>
   );

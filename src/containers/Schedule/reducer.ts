@@ -14,13 +14,13 @@ interface TcalendarDatas {
 }
 
 export interface TupcomingTickets {
-  today: [] | TticketData[];
-  others: [] | TticketData[];
+  today: TticketData[] | [];
+  others: TticketData[] | [];
 }
 
 interface TupcomingDatas {
   loading: boolean;
-  upcomingTickets: null | TupcomingTickets;
+  upcomingTickets: TupcomingTickets | null;
 }
 
 interface IinitialState {

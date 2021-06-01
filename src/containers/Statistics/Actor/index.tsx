@@ -58,7 +58,7 @@ function Actor({ data }: ActorProps) {
               <p>관람 횟수</p>
             </li>
             {data &&
-              tableData.map((actor: { actor: string; count: number }) => (
+              tableData.map((actor: Tactor) => (
                 <li key={actor.actor} css={S.listItem}>
                   <p>{actor.actor}</p>
                   <p>{actor.count}회</p>

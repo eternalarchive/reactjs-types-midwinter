@@ -14,7 +14,7 @@ import {
   hideTicketInputForm,
   postAddTicketRequest,
 } from './actions';
-import { CATEGORIES, CATEGORY } from './constants';
+import { CATEGORIES, CATEGORY, TICKETINPUTS } from './constants';
 import PosterSearchInput from './PosterSearchInput';
 import { S } from './styles';
 
@@ -39,7 +39,7 @@ export interface TinputTicketData {
   schedule: string;
   place?: string;
   seat?: string;
-  price?: string;
+  price?: number;
   casting?: string;
   discount_type?: string;
   memo?: string;
@@ -69,8 +69,7 @@ function TicketInput() {
     reset({
       category: ticketState.category || 'default',
       title: ticketState.title || undefined,
-      schedule:
-        dayjs(ticketState.schedule).format('YYYY-MM-DDTHH:mm') || undefined,
+      schedule: dayjs(ticketState.schedule).format('YYYY-MM-DDTHH:mm'),
       place: ticketState.place || undefined,
       seat: ticketState.seat || undefined,
       price: ticketState.price || undefined,
@@ -86,11 +85,11 @@ function TicketInput() {
 
   const onSubmit = (data: TinputTicketData) => {
     if (!imgUrl && !ticketState.poster) return alert('사진을 추가해주세요.');
-    const { title, price, casting } = data;
+
+    const { title, casting } = data;
     const submitDatas: TticketData = {
       ...data,
       title: title.trim(),
-      price: price ? +price : undefined,
       casting: casting
         ? casting.split(',').map(person => person.trim())
         : undefined,
@@ -98,10 +97,6 @@ function TicketInput() {
 
     if (imgUrl || ticketState.poster) {
       submitDatas.poster = imgUrl || ticketState.poster;
-    }
-
-    if (price) {
-      submitDatas.price = +price;
     }
 
     if (ticketState.isModify) {
@@ -188,32 +183,15 @@ function TicketInput() {
               />
             )}
           />
-          <input
-            placeholder="관람 장소를 입력해주세요."
-            css={S.textInput}
-            {...register('place')}
-          />
-          <input
-            placeholder="좌석을 입력해주세요."
-            css={S.textInput}
-            {...register('seat')}
-          />
-          <input
-            type="number"
-            placeholder="가격을 입력해주세요."
-            css={S.textInput}
-            {...register('price')}
-          />
-          <input
-            placeholder="캐스팅을 ,로 구분하여 입력해주세요."
-            css={S.textInput}
-            {...register('casting')}
-          />
-          <input
-            placeholder="할인권종을 입력해주세요."
-            css={S.textInput}
-            {...register('discount_type')}
-          />
+          {TICKETINPUTS.map(input => (
+            <input
+              key={input.key}
+              type={input.type || 'text'}
+              placeholder={input.placeholder}
+              css={S.textInput}
+              {...register(input.key)}
+            />
+          ))}
           <textarea
             placeholder="메모"
             css={S.textInput}

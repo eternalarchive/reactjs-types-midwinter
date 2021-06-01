@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { rootState } from '../../../store/rootReducer';
 import EmptyBox from '../../../components/DataDisplay/EmptyBox';
 import { TticketData } from '../saga';
+import { TupcomingTickets } from '../reducer';
 import UpcomingTicket from './UpcomingTicket';
 import { S } from './styles';
 
-function UpcomingTickets() {
-  const upcomingTickets = useSelector(
-    (state: rootState) => state.schedule.upcomingDatas.upcomingTickets,
-  );
+interface UpcomingTicketsProps {
+  upcomingTickets: TupcomingTickets | null;
+}
 
+function UpcomingTickets({ upcomingTickets }: UpcomingTicketsProps) {
   const [isEmpty, setIsEmpty] = useState(false);
 
   useEffect(() => {

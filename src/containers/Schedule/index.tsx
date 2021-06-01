@@ -20,13 +20,16 @@ export interface TticketModifyData {
   casting?: string[];
   discount_type?: string;
   memo?: string;
-  isModify?: boolean;
+  isModify: boolean;
 }
 
 function Schedule() {
   const dispatch = useDispatch();
-  const loading = useSelector(
-    (state: rootState) => state.schedule.calendarDatas.loading,
+  const { calendarTickets, loading } = useSelector(
+    (state: rootState) => state.schedule.calendarDatas,
+  );
+  const upcomingTickets = useSelector(
+    (state: rootState) => state.schedule.upcomingDatas.upcomingTickets,
   );
 
   useEffect(() => {
@@ -47,8 +50,11 @@ function Schedule() {
     <>
       <section css={S.section}>
         <h2 className="a11y-hidden">관람 일정</h2>
-        <MonthlyCalendar openTicketForm={openTicketForm} />
-        <UpcomingTickets />
+        <MonthlyCalendar
+          calendarTickets={calendarTickets}
+          openTicketForm={openTicketForm}
+        />
+        <UpcomingTickets upcomingTickets={upcomingTickets} />
       </section>
     </>
   );
