@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
-import { SimpleRightArrow, SimpleLeftArrow } from '../../../components/Svgs';
+import SimpleRightArrow from '../../../components/Svgs/SimpleRightArrow';
+import SimpleLeftArrow from '../../../components/Svgs/SimpleLeftArrow';
 import { rootState } from '../../../store/rootReducer';
 import { TticketModifyData } from '..';
 import CalendarItem from './CalendarItem';

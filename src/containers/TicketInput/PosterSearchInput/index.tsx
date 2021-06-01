@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { BackArrowIcon } from '../../../components/Svgs';
+import BackArrowIcon from '../../../components/Svgs/BackArrowIcon';
 import { rootState } from '../../../store/rootReducer';
 import { getGoogleImgRequest } from '../actions';
 import { S } from './styles';

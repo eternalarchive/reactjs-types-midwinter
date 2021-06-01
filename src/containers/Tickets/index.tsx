@@ -2,7 +2,7 @@ import React, { useState, useEffect, createRef } from 'react';
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../store/rootReducer';
-import { SearchIcon } from '../../components/Svgs/index';
+import SearchIcon from '../../components/Svgs/SearchIcon';
 import Ticket from '../../components/DataDisplay/Ticket';
 import EmptyBox from '../../components/DataDisplay/EmptyBox';
 import Loading from '../../components/Common/Loading';

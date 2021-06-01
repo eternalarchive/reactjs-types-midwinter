@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloseIcon } from '../../Svgs';
+import CloseIcon from '../../Svgs/CloseIcon';
 import { S } from './styles';
 
 interface CloseButtonProps {

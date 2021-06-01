@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from 'react';
 import { useDispatch } from 'react-redux';
 import { showSideMenu } from '../../../../containers/SideMenu/actions';
-import { MenuBar } from '../../../Svgs/index';
+import MenuBar from '../../../Svgs/MenuBar';
 import { S } from '../styles';
 
 function Header() {
