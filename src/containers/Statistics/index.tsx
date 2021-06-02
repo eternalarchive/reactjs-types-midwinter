@@ -9,11 +9,11 @@ import { S } from './styles';
 
 function Statistics() {
   const dispatch = useDispatch();
-  const { loading, actorStatistics } = useSelector(
+  const { loading: actorLoading, actorStatistics } = useSelector(
     (state: rootState) => state.statistics.actorDatas,
   );
-  const viewStatistics = useSelector(
-    (state: rootState) => state.statistics.viewDatas.viewStatistics,
+  const { loading: viewLoading, viewStatistics } = useSelector(
+    (state: rootState) => state.statistics.viewDatas,
   );
 
   const [clickedTab, setClickedTab] = useState<'actor' | 'view'>('actor');
@@ -30,7 +30,7 @@ function Statistics() {
     setClickedTab(tab);
   };
 
-  if (loading) return <Loading />;
+  if (actorLoading || viewLoading) return <Loading />;
 
   return (
     <section css={S.section}>

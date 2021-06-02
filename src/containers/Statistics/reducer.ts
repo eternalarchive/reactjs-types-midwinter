@@ -21,22 +21,22 @@ export interface Tview {
 interface IinitialState {
   actorDatas: {
     loading: boolean;
-    actorStatistics: Tactor[] | null;
+    actorStatistics: Tactor[] | [];
   };
   viewDatas: {
     loading: boolean;
-    viewStatistics: Tview[] | null;
+    viewStatistics: Tview[];
   };
 }
 
 export const initialState: IinitialState = {
   actorDatas: {
     loading: false,
-    actorStatistics: null,
+    actorStatistics: [],
   },
   viewDatas: {
     loading: false,
-    viewStatistics: null,
+    viewStatistics: [],
   },
 };
 
