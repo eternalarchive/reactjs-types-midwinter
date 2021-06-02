@@ -29,7 +29,7 @@ function View({ data }: ViewProps) {
         secondContent={`${totalPrice.toLocaleString('ko-KR')}원`}
       />
       <div>
-        <BlueTextBox text={'2021년 관람 기록'} />
+        <BlueTextBox>2021년 관람 기록</BlueTextBox>
         <LineBarChart data={data} />
       </div>
       <ul css={S.allList}>

@@ -48,7 +48,7 @@ function Actor({ data }: ActorProps) {
         secondTitle="가장 많이 본 배우"
         secondContent={`${maxActor}(${maxCount}회)`}
       />
-      <BlueTextBox text="차트에는 최대 상위 10명의 배우까지 표시됩니다" />
+      <BlueTextBox>차트에는 최대 상위 10명의 배우까지 표시됩니다</BlueTextBox>
       <BasicBarChart data={chartData} />
       <ul css={S.allList}>
         <li css={S.listItem}>

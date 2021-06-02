@@ -2,16 +2,16 @@ import React from 'react';
 import { S } from './styles';
 
 interface BlueTextBoxProps {
-  text: string;
+  children: React.ReactNode;
 }
 
-function BlueTextBox({ text }: BlueTextBoxProps) {
+function BlueTextBox({ children, ...rest }: BlueTextBoxProps) {
   return (
-    <p css={S.noticeText}>
+    <p css={S.noticeText} {...rest}>
       <span role="img" aria-label="rainbow">
         🌈
       </span>{' '}
-      {text}
+      {children}
     </p>
   );
 }
