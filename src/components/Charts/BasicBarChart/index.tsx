@@ -7,9 +7,14 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from 'recharts';
+import { Tactor } from '../../../containers/Statistics/reducer';
 import CustomizedTooltip from './CustomizedTooltip';
 
-function BasicBarChart({ data }: any) {
+interface BasicBarChartProps {
+  data: Tactor[];
+}
+
+function BasicBarChart({ data }: BasicBarChartProps) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart

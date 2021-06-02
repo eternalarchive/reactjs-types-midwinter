@@ -9,9 +9,14 @@ import {
   Line,
   CartesianGrid,
 } from 'recharts';
+import { Tview } from '../../../containers/Statistics/reducer';
 import CustomizedTooltip from './CustomizedTooltip';
 
-function LineBarChart({ data }: any) {
+interface LineBarChartProps {
+  data: Tview[];
+}
+
+function LineBarChart({ data }: LineBarChartProps) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <ComposedChart
