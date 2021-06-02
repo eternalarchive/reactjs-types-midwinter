@@ -9,10 +9,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Global } from '@emotion/react';
 import { sanitize } from 'emotion-sanitize';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { customStyles } from './css/customStyles';
+import { rootReducer, rootSaga } from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { rootReducer, rootSaga } from './store';
-import { customStyles } from './css/customStyles';
 
 const sagaMiddleware = createSagaMiddleware();
 const persistConfig = { key: 'root', storage };

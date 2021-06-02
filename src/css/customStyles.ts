@@ -48,6 +48,7 @@ export const customStyles = css`
   }
 
   a {
+    color: inherit;
     text-decoration: none;
     :visited {
       color: inherit;
