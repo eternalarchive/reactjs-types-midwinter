@@ -2,17 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../store/rootReducer';
+import history from '../../utils/history';
 import { postSignInRequest } from './actions';
 import { TsignInInfo } from './saga';
 import { S } from './styles';
 
 function SignIn() {
+  const token = localStorage.getItem('token');
   const dispatch = useDispatch();
   const error = useSelector(
     (state: rootState) => state.signIn.signInInfo.error,
   );
   const [errorMsg, setErrorMsg] = useState<string>('');
   const { register, handleSubmit } = useForm<TsignInInfo>();
+
+  useEffect(() => {
+    if (token) return history.push('/');
+  }, [token]);
 
   useEffect(() => {
     if (error === 401) {
