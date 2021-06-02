@@ -6,7 +6,7 @@ import { TticketModifyData } from '../../index';
 
 interface CalendarItemProps {
   date: dayjs.Dayjs;
-  calendarTickets: TticketData[] | null;
+  calendarTickets: TticketData[];
   openTicketForm: (ticketData: TticketModifyData) => void;
 }
 
@@ -16,14 +16,25 @@ function CalendarItem({
   openTicketForm,
 }: CalendarItemProps) {
   const renderPoster = (current: dayjs.Dayjs) => {
-    if (!calendarTickets) {
-      return <span className={`text`}>{`${current.format('D')}`}</span>;
+    if (calendarTickets.length === 0) {
+      return (
+        <span
+          className={`text`}
+          onClick={() =>
+            openTicketForm({
+              schedule: current.format('YYYY-MM-DDT20:00'),
+              isModify: false,
+            })
+          }
+        >{`${current.format('DD')}`}</span>
+      );
     }
 
     const todayTickets = calendarTickets.filter(
       (data: { schedule: string }) =>
         dayjs(data.schedule).format('YYYYMMDD') === current.format('YYYYMMDD'),
     );
+
     return (
       <>
         {todayTickets.length !== 0 ? (

@@ -25,11 +25,11 @@ export interface TticketModifyData {
 
 function Schedule() {
   const dispatch = useDispatch();
-  const { calendarTickets, loading } = useSelector(
+  const { loading: calendarLoading, calendarTickets } = useSelector(
     (state: rootState) => state.schedule.calendarDatas,
   );
-  const upcomingTickets = useSelector(
-    (state: rootState) => state.schedule.upcomingDatas.upcomingTickets,
+  const { loading: upcomingLoading, upcomingTickets } = useSelector(
+    (state: rootState) => state.schedule.upcomingDatas,
   );
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function Schedule() {
     dispatch(showTicketInputForm(ticketData));
   };
 
-  if (loading) return <Loading />;
+  if (calendarLoading || upcomingLoading) return <Loading />;
 
   return (
     <>

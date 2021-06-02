@@ -10,7 +10,7 @@ import { TticketData } from './saga';
 
 interface TcalendarDatas {
   loading: boolean;
-  calendarTickets: TticketData[] | null;
+  calendarTickets: TticketData[] | [];
 }
 
 export interface TupcomingTickets {
@@ -20,7 +20,7 @@ export interface TupcomingTickets {
 
 interface TupcomingDatas {
   loading: boolean;
-  upcomingTickets: TupcomingTickets | null;
+  upcomingTickets: TupcomingTickets;
 }
 
 interface IinitialState {
@@ -31,11 +31,11 @@ interface IinitialState {
 export const initialState: IinitialState = {
   calendarDatas: {
     loading: false,
-    calendarTickets: null,
+    calendarTickets: [],
   },
   upcomingDatas: {
     loading: false,
-    upcomingTickets: null,
+    upcomingTickets: { today: [], others: [] },
   },
 };
 

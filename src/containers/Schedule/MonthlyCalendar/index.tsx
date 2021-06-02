@@ -8,7 +8,7 @@ import CalendarItem from './CalendarItem';
 import { S } from './styles';
 
 interface MonthlyCalendarProps {
-  calendarTickets: TticketData[] | null;
+  calendarTickets: TticketData[];
   openTicketForm: (ticketData: TticketModifyData) => void;
 }
 
