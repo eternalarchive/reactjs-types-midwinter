@@ -3,7 +3,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 import { rootState } from '../../store/rootReducer';
 import BlueButton from '../../components/Buttons/BlueButton';
 import CloseButton from '../../components/Buttons/CloseButton';
@@ -16,24 +15,10 @@ import {
 } from './actions';
 import { CATEGORIES, CATEGORY, TICKETINPUTS } from './constants';
 import PosterSearchInput from './PosterSearchInput';
-import { S } from './styles';
-
-const useStyles = makeStyles(() => ({
-  container: {
-    borderBottom: '2px solid #d0d0d0',
-    '&:hover': {
-      borderBottomColor: '#131313',
-    },
-  },
-  textField: {
-    fontSize: '22px',
-    margin: '10px 0',
-    color: '#131313',
-  },
-}));
+import { S, useStyles } from './styles';
+import BasicInput from '../../components/Form/BasicInput';
 
 export interface TinputTicketData {
-  poster: string;
   category: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
   title: string;
   schedule: string;
@@ -90,14 +75,11 @@ function TicketInput() {
     const submitDatas: TticketData = {
       ...data,
       title: title.trim(),
+      poster: imgUrl || ticketState.poster || '', // 여기 짜증나..
       casting: casting
         ? casting.split(',').map(person => person.trim())
         : undefined,
     };
-
-    if (imgUrl || ticketState.poster) {
-      submitDatas.poster = imgUrl || ticketState.poster;
-    }
 
     if (ticketState.isModify) {
       submitDatas._id = ticketState._id;
@@ -122,7 +104,9 @@ function TicketInput() {
   const deleteTicket = () => {
     const isDeleteConfirm = window.confirm('티켓을 삭제하시겠어요?');
     if (!isDeleteConfirm) return;
-    dispatch(deleteTicketRequest(ticketState._id));
+    if (ticketState._id) {
+      dispatch(deleteTicketRequest(ticketState._id));
+    }
     closeForm();
   };
 
@@ -158,15 +142,17 @@ function TicketInput() {
               </option>
             ))}
           </select>
-          <input
-            placeholder="제목을 입력해주세요."
-            css={S.textInput}
-            {...register('title', { required: true })}
+          <BasicInput
+            placeholder="제목을 입력해주세요"
+            label="title"
+            required={true}
+            register={register}
           />
           <Controller
             name="schedule"
             control={control}
             rules={{ required: true }}
+            defaultValue={dayjs().format('YYYY-MM-DDTHH:mm')}
             render={({ field }) => (
               <TextField
                 id="datetime-local"
@@ -184,12 +170,12 @@ function TicketInput() {
             )}
           />
           {TICKETINPUTS.map(input => (
-            <input
+            <BasicInput
               key={input.key}
               type={input.type || 'text'}
               placeholder={input.placeholder}
-              css={S.textInput}
-              {...register(input.key)}
+              label={input.key}
+              register={register}
             />
           ))}
           <textarea

@@ -8,7 +8,12 @@ import { S } from './styles';
 function EmptyBox() {
   const dispatch = useDispatch();
   const openTicketForm = () => {
-    dispatch(showTicketInputForm({ schedule: dayjs().format() }));
+    dispatch(
+      showTicketInputForm({
+        schedule: dayjs().format('YYYY-MM-DDT20:00'),
+        isModify: false,
+      }),
+    );
   };
 
   return (

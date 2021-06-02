@@ -9,7 +9,7 @@ import {
   DELETE_TICKET_REQUEST,
   DELETE_TICKET_SUCCESS,
 } from './constants';
-import { Tposter } from './reducer';
+import { Tposter, TticketState } from './reducer';
 
 export type TypeActions = ReturnType<
   | typeof showTicketInputForm
@@ -22,7 +22,7 @@ export type TypeActions = ReturnType<
   | typeof deleteTicketSuccess
 >;
 
-export const showTicketInputForm = (data: any) => ({
+export const showTicketInputForm = (data: TticketState) => ({
   type: SHOW_TICKET_INPUT_FORM,
   data,
 });

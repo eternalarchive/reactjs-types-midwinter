@@ -73,7 +73,10 @@ interface deleteTicketProps {
 }
 
 interface TdeleteTicketResDatas {
-  data: any;
+  data: {
+    statusCode: number;
+    message: string;
+  };
 }
 
 function* deleteTicket(

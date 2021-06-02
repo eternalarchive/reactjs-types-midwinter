@@ -4,17 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import BackArrowIcon from '../../../components/Svgs/BackArrowIcon';
 import { rootState } from '../../../store/rootReducer';
 import { getGoogleImgRequest } from '../actions';
+import PosterBox from './PosterBox';
 import { S } from './styles';
 
 interface TsearchQuery {
   searchQuery: string;
 }
-
-export interface TdataItems {
-  title: string;
-  link: string;
-}
-
 interface PosterSearchInputProps {
   isImgSearchOpen: boolean;
   setImgSearchOpen: Dispatch<SetStateAction<boolean>>;
@@ -28,8 +23,8 @@ function PosterSearchInput({
 }: PosterSearchInputProps) {
   const dispatch = useDispatch();
   const { register, handleSubmit, reset } = useForm();
-  const posters = useSelector(
-    (state: rootState) => state.ticketInput.formState.posters,
+  const { loading, posters } = useSelector(
+    (state: rootState) => state.ticketInput.formState,
   );
 
   const onSubmit = async ({ searchQuery }: TsearchQuery) => {
@@ -54,35 +49,12 @@ function PosterSearchInput({
               {...register('searchQuery', { required: true })}
             />
           </form>
-          {posters ? (
-            <ul css={S.ul}>
-              {posters.map(
-                (item: { link: string; title: string }, index: number) => (
-                  <li
-                    css={S.poster}
-                    onClick={() => handleImageClick(item.link)}
-                    key={`${item.title + index}`}
-                  >
-                    <img
-                      src={item.link}
-                      alt={item.title}
-                      css={S.img}
-                      onClick={() => setImgSearchOpen(false)}
-                    />
-                  </li>
-                ),
-              )}
-            </ul>
-          ) : (
-            <div css={S.empty}>
-              <p css={S.tip}>Tip</p>
-              <p>
-                직사각형 형태의 이미지가
-                <br />
-                달력에 잘 어울려요!
-              </p>
-            </div>
-          )}
+          <PosterBox
+            loading={loading}
+            posters={posters}
+            setImgSearchOpen={setImgSearchOpen}
+            handleImageClick={handleImageClick}
+          />
           <button css={S.closeButton} onClick={() => setImgSearchOpen(false)}>
             <BackArrowIcon />
           </button>

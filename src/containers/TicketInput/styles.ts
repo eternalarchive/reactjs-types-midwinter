@@ -1,5 +1,20 @@
 import { css, keyframes } from '@emotion/react';
+import { makeStyles } from '@material-ui/core/styles';
 import media from '../../libs/MediaQuery';
+
+export const useStyles = makeStyles(() => ({
+  container: {
+    borderBottom: '2px solid #d0d0d0',
+    '&:hover': {
+      borderBottomColor: '#131313',
+    },
+  },
+  textField: {
+    fontSize: '22px',
+    margin: '10px 0',
+    color: '#131313',
+  },
+}));
 
 const popupAni = keyframes`
   from {
