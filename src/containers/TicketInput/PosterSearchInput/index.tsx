@@ -7,7 +7,7 @@ import { getGoogleImgRequest } from '../actions';
 import PosterBox from './PosterBox';
 import { S } from './styles';
 
-interface TsearchQuery {
+interface IsearchQuery {
   searchQuery: string;
 }
 interface PosterSearchInputProps {
@@ -27,7 +27,7 @@ function PosterSearchInput({
     (state: rootState) => state.ticketInput.formState,
   );
 
-  const onSubmit = async ({ searchQuery }: TsearchQuery) => {
+  const onSubmit = async ({ searchQuery }: IsearchQuery) => {
     dispatch(getGoogleImgRequest(searchQuery));
     reset();
   };

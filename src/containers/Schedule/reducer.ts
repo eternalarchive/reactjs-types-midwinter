@@ -6,26 +6,26 @@ import {
   GET_UPCOMING_TICKETS_REQUEST,
   GET_UPCOMING_TICKETS_SUCCESS,
 } from './constants';
-import { TticketData } from './saga';
+import { IticketData } from './saga';
 
-interface TcalendarDatas {
+interface IcalendarDatas {
   loading: boolean;
-  calendarTickets: TticketData[] | [];
+  calendarTickets: IticketData[] | [];
 }
 
-export interface TupcomingTickets {
-  today: TticketData[] | [];
-  others: TticketData[] | [];
+export interface IupcomingTickets {
+  today: IticketData[] | [];
+  others: IticketData[] | [];
 }
 
-interface TupcomingDatas {
+interface IupcomingDatas {
   loading: boolean;
-  upcomingTickets: TupcomingTickets;
+  upcomingTickets: IupcomingTickets;
 }
 
 interface IinitialState {
-  calendarDatas: TcalendarDatas;
-  upcomingDatas: TupcomingDatas;
+  calendarDatas: IcalendarDatas;
+  upcomingDatas: IupcomingDatas;
 }
 
 export const initialState: IinitialState = {

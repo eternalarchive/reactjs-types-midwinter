@@ -1,4 +1,4 @@
-import { TticketData } from '../Schedule/saga';
+import { IticketData } from '../Schedule/saga';
 import {
   SHOW_TICKET_INPUT_FORM,
   HIDE_TICKET_INPUT_FORM,
@@ -9,7 +9,7 @@ import {
   DELETE_TICKET_REQUEST,
   DELETE_TICKET_SUCCESS,
 } from './constants';
-import { Tposter, TticketState } from './reducer';
+import { Iposter, IticketState } from './reducer';
 
 export type TypeActions = ReturnType<
   | typeof showTicketInputForm
@@ -22,7 +22,7 @@ export type TypeActions = ReturnType<
   | typeof deleteTicketSuccess
 >;
 
-export const showTicketInputForm = (data: TticketState) => ({
+export const showTicketInputForm = (data: IticketState) => ({
   type: SHOW_TICKET_INPUT_FORM,
   data,
 });
@@ -31,7 +31,7 @@ export const hideTicketInputForm = () => ({
   type: HIDE_TICKET_INPUT_FORM,
 });
 
-export const postAddTicketRequest = (data: TticketData) => ({
+export const postAddTicketRequest = (data: IticketData) => ({
   type: POST_ADD_TICKET_REQUEST,
   data,
 });
@@ -45,7 +45,7 @@ export const getGoogleImgRequest = (searchQuery: string) => ({
   searchQuery,
 });
 
-export const getGoogleImgSuccess = (posters: Tposter[]) => ({
+export const getGoogleImgSuccess = (posters: Iposter[]) => ({
   type: GET_SEARCH_POSTER_SUCCESS,
   posters,
 });

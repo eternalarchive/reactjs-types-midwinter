@@ -9,11 +9,11 @@ import {
   Line,
   CartesianGrid,
 } from 'recharts';
-import { Tview } from '../../../containers/Statistics/reducer';
+import { Iview } from '../../../containers/Statistics/reducer';
 import CustomizedTooltip from './CustomizedTooltip';
 
 interface LineBarChartProps {
-  data: Tview[];
+  data: Iview[];
 }
 
 function LineBarChart({ data }: LineBarChartProps) {

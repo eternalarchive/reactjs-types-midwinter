@@ -1,13 +1,13 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
-import { TticketData } from '../../saga';
-import { TticketModifyData } from '../../index';
+import { IticketData } from '../../saga';
+import { IticketModifyData } from '../../index';
 
 interface CalendarItemProps {
   date: dayjs.Dayjs;
-  calendarTickets: TticketData[];
-  openTicketForm: (ticketData: TticketModifyData) => void;
+  calendarTickets: IticketData[];
+  openTicketForm: (ticketData: IticketModifyData) => void;
 }
 
 function CalendarItem({
@@ -38,7 +38,7 @@ function CalendarItem({
     return (
       <>
         {todayTickets.length !== 0 ? (
-          todayTickets.map((ticket: TticketData) => (
+          todayTickets.map((ticket: IticketData) => (
             <img
               key={`${ticket._id}`}
               src={ticket.poster}

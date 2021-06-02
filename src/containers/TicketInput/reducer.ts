@@ -11,7 +11,7 @@ import {
   DELETE_TICKET_SUCCESS,
 } from './constants';
 
-export interface TticketState {
+export interface IticketState {
   _id?: string;
   user_id?: string;
   category?: string;
@@ -27,20 +27,20 @@ export interface TticketState {
   isModify: boolean;
 }
 
-export interface Tposter {
+export interface Iposter {
   link: string;
   title: string;
 }
 
-interface TformState {
+interface IformState {
   isOpen: boolean;
   loading: boolean;
-  posters: Tposter[] | null;
+  posters: Iposter[] | null;
 }
 
 interface IinitialState {
-  formState: TformState;
-  ticketState: TticketState;
+  formState: IformState;
+  ticketState: IticketState;
 }
 
 export const initialState: IinitialState = {

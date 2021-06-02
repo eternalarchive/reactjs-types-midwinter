@@ -4,7 +4,7 @@ import {
   GET_STATISTICS_VIEW_REQUEST,
   GET_STATISTICS_VIEW_SUCCESS,
 } from './constants';
-import { Tactor, Tview } from './reducer';
+import { Iactor, Iview } from './reducer';
 
 export type TypeActions = ReturnType<
   | typeof getStatisticsActorRequest
@@ -17,7 +17,7 @@ export const getStatisticsActorRequest = () => ({
   type: GET_STATISTICS_ACTOR_REQUEST,
 });
 
-export const getStatisticsActorSuccess = (data: Tactor[]) => ({
+export const getStatisticsActorSuccess = (data: Iactor[]) => ({
   type: GET_STATISTICS_ACTOR_SUCCESS,
   data,
 });
@@ -27,7 +27,7 @@ export const getStatisticsViewRequest = (year: number) => ({
   year,
 });
 
-export const getStatisticsViewSuccess = (data: Tview[]) => ({
+export const getStatisticsViewSuccess = (data: Iview[]) => ({
   type: GET_STATISTICS_VIEW_SUCCESS,
   data,
 });

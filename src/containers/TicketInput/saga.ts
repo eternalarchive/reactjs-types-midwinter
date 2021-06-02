@@ -8,7 +8,7 @@ import {
   getAllTicketsRequest,
   getUpcomingTicketsRequest,
 } from '../Schedule/actions';
-import { TticketData } from '../Schedule/saga';
+import { IticketData } from '../Schedule/saga';
 import {
   POST_ADD_TICKET_REQUEST,
   GET_SEARCH_POSTER_REQUEST,
@@ -19,22 +19,22 @@ import {
   getGoogleImgSuccess,
   deleteTicketSuccess,
 } from './actions';
-import { Tposter } from './reducer';
+import { Iposter } from './reducer';
 
 interface postAddTicketProps {
-  data: TticketData;
+  data: IticketData;
   type: string;
 }
 
-interface TpostAddTicketResDatas {
+interface IpostAddTicketResDatas {
   data: {
-    data: TticketData;
+    data: IticketData;
   };
 }
 
 function* postAddTicket(
   action: postAddTicketProps,
-): Generator<unknown, void, TpostAddTicketResDatas> {
+): Generator<unknown, void, IpostAddTicketResDatas> {
   try {
     yield call(postAddTicketApi, action.data);
     yield put(postAddTicketSuccess());
@@ -50,15 +50,15 @@ interface getGoogleImgProps {
   type: string;
 }
 
-interface TgetGoogleImgResDatas {
+interface IgetGoogleImgResDatas {
   data: {
-    items: Tposter[];
+    items: Iposter[];
   };
 }
 
 function* getGoogleImg(
   action: getGoogleImgProps,
-): Generator<unknown, void, TgetGoogleImgResDatas> {
+): Generator<unknown, void, IgetGoogleImgResDatas> {
   try {
     const response = yield call(getGoogleImageApi, action.searchQuery);
     yield put(getGoogleImgSuccess(response.data.items));
@@ -72,7 +72,7 @@ interface deleteTicketProps {
   type: string;
 }
 
-interface TdeleteTicketResDatas {
+interface IdeleteTicketResDatas {
   data: {
     statusCode: number;
     message: string;
@@ -81,7 +81,7 @@ interface TdeleteTicketResDatas {
 
 function* deleteTicket(
   action: deleteTicketProps,
-): Generator<unknown, void, TdeleteTicketResDatas> {
+): Generator<unknown, void, IdeleteTicketResDatas> {
   try {
     yield call(deleteTicketApi, action.id);
     yield put(deleteTicketSuccess());

@@ -3,11 +3,11 @@ import dayjs from 'dayjs';
 import LineBarChart from '../../../components/Charts/LineBarChart';
 import TopInfo from '../../../components/DataDisplay/TopInfo';
 import BlueTextBox from '../../../components/DataDisplay/BlueTextBox';
-import { Tview } from '../reducer';
+import { Iview } from '../reducer';
 import { S } from './styles';
 
 interface ViewProps {
-  data: Tview[];
+  data: Iview[];
 }
 
 function View({ data }: ViewProps) {
@@ -38,7 +38,7 @@ function View({ data }: ViewProps) {
           <p>금액</p>
           <p>관람 횟수</p>
         </li>
-        {data.map((view: Tview) => (
+        {data.map((view: Iview) => (
           <li key={view.month} css={S.listItem}>
             <p>{dayjs(view.month).format('M')}월</p>
             <p>{view.count}회</p>

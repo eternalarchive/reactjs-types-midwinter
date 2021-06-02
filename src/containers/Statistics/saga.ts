@@ -5,14 +5,14 @@ import {
   GET_STATISTICS_VIEW_REQUEST,
 } from './constants';
 import { getStatisticsActorSuccess, getStatisticsViewSuccess } from './actions';
-import { Tactor, Tview } from './reducer';
+import { Iactor, Iview } from './reducer';
 
-interface TactorResDatas {
-  data: Tactor[];
+interface IactorResDatas {
+  data: Iactor[];
 }
 
-interface TviewResDatas {
-  data: Tview[];
+interface IviewResDatas {
+  data: Iview[];
 }
 
 interface getStatisticsProps {
@@ -20,7 +20,7 @@ interface getStatisticsProps {
   type: string;
 }
 
-function* getStatisticsActor(): Generator<unknown, void, TactorResDatas> {
+function* getStatisticsActor(): Generator<unknown, void, IactorResDatas> {
   try {
     const response = yield call(getStatisticsActorApi);
     yield delay(50);
@@ -30,7 +30,7 @@ function* getStatisticsActor(): Generator<unknown, void, TactorResDatas> {
 
 function* getStatisticsView(
   action: getStatisticsProps,
-): Generator<unknown, void, TviewResDatas> {
+): Generator<unknown, void, IviewResDatas> {
   try {
     const response = yield call(getStatisticsViewApi, action.year);
     yield put(getStatisticsViewSuccess(response.data));

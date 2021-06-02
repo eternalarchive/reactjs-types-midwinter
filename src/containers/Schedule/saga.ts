@@ -5,9 +5,9 @@ import {
   GET_UPCOMING_TICKETS_REQUEST,
 } from './constants';
 import { getAllTicketsSuccess, getUpcomingTicketsSuccess } from './actions';
-import { TupcomingTickets } from './reducer';
+import { IupcomingTickets } from './reducer';
 
-export interface TticketData {
+export interface IticketData {
   _id?: string;
   poster: string;
   category: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
@@ -21,15 +21,15 @@ export interface TticketData {
   memo?: string;
 }
 
-interface TscheduleResDatas {
-  data: TticketData[];
+interface IscheduleResDatas {
+  data: IticketData[];
 }
 
-interface TupcomingResDatas {
-  data: TupcomingTickets;
+interface IupcomingResDatas {
+  data: IupcomingTickets;
 }
 
-function* getAllTickets(): Generator<unknown, void, TscheduleResDatas> {
+function* getAllTickets(): Generator<unknown, void, IscheduleResDatas> {
   try {
     const response = yield call(getAllTicketsApi);
     yield delay(50);
@@ -37,7 +37,7 @@ function* getAllTickets(): Generator<unknown, void, TscheduleResDatas> {
   } catch (error) {}
 }
 
-function* getUpcomingTickets(): Generator<unknown, void, TupcomingResDatas> {
+function* getUpcomingTickets(): Generator<unknown, void, IupcomingResDatas> {
   try {
     const response = yield call(getUpcomingTicketsApi);
     yield put(getUpcomingTicketsSuccess(response.data));

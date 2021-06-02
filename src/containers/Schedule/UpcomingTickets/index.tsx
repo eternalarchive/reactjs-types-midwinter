@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 import EmptyBox from '../../../components/DataDisplay/EmptyBox';
-import { TupcomingTickets } from '../reducer';
+import { IupcomingTickets } from '../reducer';
 import TicketBlock from './TicketBlock';
 import { S } from './styles';
 
 interface UpcomingTicketsProps {
-  upcomingTickets: TupcomingTickets;
+  upcomingTickets: IupcomingTickets;
 }
 
 function UpcomingTickets({ upcomingTickets }: UpcomingTicketsProps) {

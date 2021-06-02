@@ -7,12 +7,12 @@ import {
   GET_STATISTICS_VIEW_SUCCESS,
 } from './constants';
 
-export interface Tactor {
+export interface Iactor {
   actor: string;
   count: number;
 }
 
-export interface Tview {
+export interface Iview {
   month: string;
   count: number;
   total: number;
@@ -21,11 +21,11 @@ export interface Tview {
 interface IinitialState {
   actorDatas: {
     loading: boolean;
-    actorStatistics: Tactor[] | [];
+    actorStatistics: Iactor[] | [];
   };
   viewDatas: {
     loading: boolean;
-    viewStatistics: Tview[];
+    viewStatistics: Iview[];
   };
 }
 

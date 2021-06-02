@@ -8,7 +8,7 @@ import UpcomingTickets from './UpcomingTickets';
 import { getAllTicketsRequest, getUpcomingTicketsRequest } from './actions';
 import { S } from './styles';
 
-export interface TticketModifyData {
+export interface IticketModifyData {
   _id?: string;
   poster?: string;
   category?: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
@@ -40,7 +40,7 @@ function Schedule() {
     dispatch(getUpcomingTicketsRequest());
   }, [dispatch]);
 
-  const openTicketForm = (ticketData: TticketModifyData) => {
+  const openTicketForm = (ticketData: IticketModifyData) => {
     dispatch(showTicketInputForm(ticketData));
   };
 

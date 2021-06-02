@@ -7,7 +7,7 @@ import Ticket from '../../components/DataDisplay/Ticket';
 import EmptyBox from '../../components/DataDisplay/EmptyBox';
 import Loading from '../../components/Common/Loading';
 import { showTicketInputForm } from '../TicketInput/actions';
-import { TticketData } from '../Schedule/saga';
+import { IticketData } from '../Schedule/saga';
 import { getAllTicketsRequest } from '../Schedule/actions';
 import { S } from './styles';
 
@@ -16,8 +16,8 @@ function Tickets() {
   const { loading, calendarTickets } = useSelector(
     (state: rootState) => state.schedule.calendarDatas,
   );
-  const [tickets, setTickets] = useState<TticketData[] | []>([]);
-  const [filterTickets, setFilterTickets] = useState<TticketData[] | []>([]);
+  const [tickets, setTickets] = useState<IticketData[] | []>([]);
+  const [filterTickets, setFilterTickets] = useState<IticketData[] | []>([]);
   const searchInputRef = createRef<any>();
 
   useEffect(() => {
@@ -55,7 +55,7 @@ function Tickets() {
     );
   };
 
-  const changeTicketInfo = (ticket: TticketData) => {
+  const changeTicketInfo = (ticket: IticketData) => {
     dispatch(showTicketInputForm({ ...ticket, isModify: true }));
   };
 
@@ -77,7 +77,7 @@ function Tickets() {
       </label>
       {filterTickets?.length !== 0 ? (
         <div css={S.ticket}>
-          {filterTickets?.map((ticket: TticketData) => (
+          {filterTickets?.map((ticket: IticketData) => (
             <Ticket
               key={ticket._id}
               ticket={ticket}

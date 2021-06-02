@@ -7,7 +7,7 @@ import { rootState } from '../../store/rootReducer';
 import BlueButton from '../../components/Buttons/BlueButton';
 import CloseButton from '../../components/Buttons/CloseButton';
 import { patchTicketDataRequest } from '../Tickets/actions';
-import { TticketData } from '../Schedule/saga';
+import { IticketData } from '../Schedule/saga';
 import {
   deleteTicketRequest,
   hideTicketInputForm,
@@ -18,7 +18,7 @@ import PosterSearchInput from './PosterSearchInput';
 import { S, useStyles } from './styles';
 import BasicInput from '../../components/Form/BasicInput';
 
-export interface TinputTicketData {
+export interface IinputTicketData {
   category: 'musical' | 'theater' | 'music-theater' | 'etc' | 'default';
   title: string;
   schedule: string;
@@ -68,11 +68,11 @@ function TicketInput() {
     setImgUrl(link);
   };
 
-  const onSubmit = (data: TinputTicketData) => {
+  const onSubmit = (data: IinputTicketData) => {
     if (!imgUrl && !ticketState.poster) return alert('사진을 추가해주세요.');
 
     const { title, casting } = data;
-    const submitDatas: TticketData = {
+    const submitDatas: IticketData = {
       ...data,
       title: title.trim(),
       poster: imgUrl || ticketState.poster || '', // 여기 짜증나..

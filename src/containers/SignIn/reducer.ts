@@ -6,7 +6,7 @@ import {
   POST_SIGN_IN_FAIL,
 } from './constants';
 
-export interface TsignInState {
+export interface IsignInState {
   email: string | null;
   token: string | null;
   loading: boolean;
@@ -14,7 +14,7 @@ export interface TsignInState {
 }
 
 interface IinitialState {
-  signInInfo: TsignInState;
+  signInInfo: IsignInState;
 }
 
 export const initialState: IinitialState = {

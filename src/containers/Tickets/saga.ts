@@ -4,26 +4,26 @@ import {
   getAllTicketsRequest,
   getUpcomingTicketsRequest,
 } from '../Schedule/actions';
-import { TticketData } from '../Schedule/saga';
+import { IticketData } from '../Schedule/saga';
 import { PATCH_TICKET_DATA_REQUEST } from './constants';
 import { patchTicketDataSuccess } from './actions';
 
 interface patchTicketProps {
-  data: TticketData;
+  data: IticketData;
   type: string;
 }
 
-interface TpatchTicketResDatas {
+interface IpatchTicketResDatas {
   data: {
     statusCode: number;
     message: string;
-    ticket: TticketData;
+    ticket: IticketData;
   };
 }
 
 function* patchTicketData(
   action: patchTicketProps,
-): Generator<unknown, void, TpatchTicketResDatas> {
+): Generator<unknown, void, IpatchTicketResDatas> {
   try {
     yield call(patchTicketDataApi, action.data);
     yield put(patchTicketDataSuccess());

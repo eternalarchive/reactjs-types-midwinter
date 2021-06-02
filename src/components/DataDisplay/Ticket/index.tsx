@@ -1,15 +1,15 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { TticketData } from '../../../containers/Schedule/saga';
+import { IticketData } from '../../../containers/Schedule/saga';
 import { CATEGORY } from '../../../containers/Tickets/constants';
 import { S } from './styles';
 
-interface TicketProps {
-  ticket: TticketData;
-  changeTicketInfo: (ticket: TticketData) => void;
+interface IicketProps {
+  ticket: IticketData;
+  changeTicketInfo: (ticket: IticketData) => void;
 }
 
-function Ticket({ ticket, changeTicketInfo }: TicketProps) {
+function Ticket({ ticket, changeTicketInfo }: IicketProps) {
   return (
     <div
       css={S.ticketItem(ticket.poster)}

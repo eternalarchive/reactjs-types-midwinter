@@ -1,4 +1,4 @@
-import { TticketData } from '../Schedule/saga';
+import { IticketData } from '../Schedule/saga';
 import {
   PATCH_TICKET_DATA_REQUEST,
   PATCH_TICKET_DATA_SUCCESS,
@@ -8,7 +8,7 @@ export type TypeActions = ReturnType<
   typeof patchTicketDataRequest | typeof patchTicketDataSuccess
 >;
 
-export const patchTicketDataRequest = (data: TticketData) => ({
+export const patchTicketDataRequest = (data: IticketData) => ({
   type: PATCH_TICKET_DATA_REQUEST,
   data,
 });

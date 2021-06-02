@@ -1,11 +1,11 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import Loading from '../../../../components/Common/Loading';
-import { Tposter } from '../../reducer';
+import { Iposter } from '../../reducer';
 import { S } from '../styles';
 
 interface PosterBoxProps {
   loading: boolean;
-  posters: Tposter[] | null;
+  posters: Iposter[] | null;
   setImgSearchOpen: Dispatch<SetStateAction<boolean>>;
   handleImageClick: (link: string) => void;
 }

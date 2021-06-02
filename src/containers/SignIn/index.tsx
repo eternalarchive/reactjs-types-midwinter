@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../store/rootReducer';
 import history from '../../utils/history';
 import { postSignInRequest } from './actions';
-import { TsignInInfo } from './saga';
+import { IsignInInfo } from './saga';
 import { S } from './styles';
 
 function SignIn() {
@@ -14,7 +14,7 @@ function SignIn() {
     (state: rootState) => state.signIn.signInInfo.error,
   );
   const [errorMsg, setErrorMsg] = useState<string>('');
-  const { register, handleSubmit } = useForm<TsignInInfo>();
+  const { register, handleSubmit } = useForm<IsignInInfo>();
 
   useEffect(() => {
     if (token) return history.push('/');
@@ -28,7 +28,7 @@ function SignIn() {
     }
   }, [error]);
 
-  const onSubmit = (data: TsignInInfo) => {
+  const onSubmit = (data: IsignInInfo) => {
     dispatch(postSignInRequest(data));
   };
 

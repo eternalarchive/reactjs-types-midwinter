@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import SimpleRightArrow from '../../../components/Svgs/SimpleRightArrow';
 import SimpleLeftArrow from '../../../components/Svgs/SimpleLeftArrow';
-import { TticketModifyData } from '../index';
-import { TticketData } from '../saga';
+import { IticketModifyData } from '../index';
+import { IticketData } from '../saga';
 import CalendarItem from './CalendarItem';
 import { S } from './styles';
 
 interface MonthlyCalendarProps {
-  calendarTickets: TticketData[];
-  openTicketForm: (ticketData: TticketModifyData) => void;
+  calendarTickets: IticketData[];
+  openTicketForm: (ticketData: IticketModifyData) => void;
 }
 
 function MonthlyCalendar({

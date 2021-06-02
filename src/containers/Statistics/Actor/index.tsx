@@ -4,16 +4,16 @@ import BasicBarChart from '../../../components/Charts/BasicBarChart';
 import BlueTextBox from '../../../components/DataDisplay/BlueTextBox';
 import EmptyBox from '../../../components/DataDisplay/EmptyBox';
 import TopInfo from '../../../components/DataDisplay/TopInfo';
-import { Tactor } from '../reducer';
+import { Iactor } from '../reducer';
 import { S } from './styles';
 
 interface ActorProps {
-  data: Tactor[] | [];
+  data: Iactor[] | [];
 }
 
 function Actor({ data }: ActorProps) {
-  const [chartData, setChartData] = useState<Tactor[] | []>([]);
-  const [tableData, setTableData] = useState<Tactor[] | []>([]);
+  const [chartData, setChartData] = useState<Iactor[] | []>([]);
+  const [tableData, setTableData] = useState<Iactor[] | []>([]);
   const [maxActor, setMaxActor] = useState<string>('');
   const [maxCount, setMaxCount] = useState<number>(0);
   const [page, setPage] = useState<number>(10);
@@ -55,7 +55,7 @@ function Actor({ data }: ActorProps) {
           <p>배우</p>
           <p>관람 횟수</p>
         </li>
-        {tableData.map((actor: Tactor) => (
+        {tableData.map((actor: Iactor) => (
           <li key={actor.actor} css={S.listItem}>
             <p>{actor.actor}</p>
             <p>{actor.count}회</p>

@@ -4,23 +4,23 @@ import history from '../../utils/history';
 import { POST_SIGN_IN_REQUEST } from './constants';
 import { postSignInSuccess, postSignInFail } from './actions';
 
-export interface TsignInInfo {
+export interface IsignInInfo {
   email: string;
   password: string;
 }
 
-export interface TsignInResDatas {
+export interface IsignInResDatas {
   data: { access_token: string };
 }
 
 interface PostSignInProps {
-  data: TsignInInfo;
+  data: IsignInInfo;
   type: string;
 }
 
 function* postSignIn(
   action: PostSignInProps,
-): Generator<unknown, void, TsignInResDatas> {
+): Generator<unknown, void, IsignInResDatas> {
   try {
     const response = yield call(postSignInApi, action.data);
     const { access_token } = response.data;

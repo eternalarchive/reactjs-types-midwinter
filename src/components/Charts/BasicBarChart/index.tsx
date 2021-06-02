@@ -7,11 +7,11 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from 'recharts';
-import { Tactor } from '../../../containers/Statistics/reducer';
+import { Iactor } from '../../../containers/Statistics/reducer';
 import CustomizedTooltip from './CustomizedTooltip';
 
 interface BasicBarChartProps {
-  data: Tactor[];
+  data: Iactor[];
 }
 
 function BasicBarChart({ data }: BasicBarChartProps) {

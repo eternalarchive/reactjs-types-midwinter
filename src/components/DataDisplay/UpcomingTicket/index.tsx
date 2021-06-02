@@ -1,11 +1,11 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { TticketData } from '../../../containers/Schedule/saga';
+import { IticketData } from '../../../containers/Schedule/saga';
 import { CATEGORY } from './constants';
 import { S } from './styles';
 
 interface UpcomingTicketProps {
-  ticket: TticketData;
+  ticket: IticketData;
 }
 
 function UpcomingTicket({ ticket }: UpcomingTicketProps) {

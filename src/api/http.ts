@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TsignInInfo } from '../containers/SignIn/saga';
+import { IsignInInfo } from '../containers/SignIn/saga';
 import { handleError } from './handleError';
 
 const {
@@ -16,7 +16,7 @@ const axiosLoginInstance = () => {
   return axios.create(params);
 };
 
-export const authPost = (path: string, data: TsignInInfo) => {
+export const authPost = (path: string, data: IsignInInfo) => {
   const instance = axiosLoginInstance();
   return new Promise((resolve, reject) => {
     instance

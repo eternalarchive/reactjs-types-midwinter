@@ -3,19 +3,19 @@ import {
   POST_SIGN_IN_SUCCESS,
   POST_SIGN_IN_FAIL,
 } from './constants';
-import { TsignInInfo } from './saga';
-import { TsignInState } from './reducer';
+import { IsignInInfo } from './saga';
+import { IsignInState } from './reducer';
 
 export type TypeActions = ReturnType<
   typeof postSignInRequest | typeof postSignInSuccess | typeof postSignInFail
 >;
 
-export const postSignInRequest = (data: TsignInInfo) => ({
+export const postSignInRequest = (data: IsignInInfo) => ({
   type: POST_SIGN_IN_REQUEST,
   data,
 });
 
-export const postSignInSuccess = (data: TsignInState) => ({
+export const postSignInSuccess = (data: IsignInState) => ({
   type: POST_SIGN_IN_SUCCESS,
   data,
 });

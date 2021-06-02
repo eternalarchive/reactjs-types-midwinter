@@ -1,19 +1,19 @@
 import React from 'react';
 import UpcomingTicket from '../../../../components/DataDisplay/UpcomingTicket';
-import { TticketData } from '../../saga';
+import { IticketData } from '../../saga';
 import { S } from './styles';
 
-interface TicketBlockProps {
-  tickets: TticketData[];
+interface IicketBlockProps {
+  tickets: IticketData[];
   title: string;
 }
 
-function TicketBlock({ tickets, title }: TicketBlockProps) {
+function TicketBlock({ tickets, title }: IicketBlockProps) {
   return (
     <div css={S.dayContainer}>
       <p css={S.title}>{title}</p>
       <ul css={S.ticketsBlock}>
-        {tickets.map((ticket: TticketData) => (
+        {tickets.map((ticket: IticketData) => (
           <UpcomingTicket ticket={ticket} key={ticket._id} />
         ))}
       </ul>
