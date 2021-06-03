@@ -26,20 +26,15 @@ function UpcomingTickets({ upcomingTickets }: UpcomingTicketsProps) {
     <>
       <section css={S.section}>
         <h3 css={S.sectionTitle}>다가오는 일정</h3>
-        {isEmpty ? (
-          <EmptyBox />
-        ) : (
-          <>
-            {upcomingTickets.today.length !== 0 && (
-              <TicketBlock
-                tickets={upcomingTickets.today}
-                title={`오늘(${dayjs().format('M월 D일')})`}
-              />
-            )}
-            {upcomingTickets.others.length !== 0 && (
-              <TicketBlock tickets={upcomingTickets.others} title="관람 예정" />
-            )}
-          </>
+        {isEmpty && <EmptyBox />}
+        {upcomingTickets.today.length !== 0 && (
+          <TicketBlock
+            tickets={upcomingTickets.today}
+            title={`오늘(${dayjs().format('M월 D일')})`}
+          />
+        )}
+        {upcomingTickets.others.length !== 0 && (
+          <TicketBlock tickets={upcomingTickets.others} title="관람 예정" />
         )}
         <Link to="tickets">
           <button css={S.viewAll}>View all</button>
