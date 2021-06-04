@@ -26,6 +26,7 @@ function CalendarItem({
               isModify: false,
             })
           }
+          tabIndex={0}
         >{`${current.format('DD')}`}</span>
       );
     }
@@ -44,6 +45,7 @@ function CalendarItem({
               src={ticket.poster}
               alt={`${ticket.title} ${ticket.schedule}`}
               onClick={() => openTicketForm({ ...ticket, isModify: true })}
+              tabIndex={0}
             />
           ))
         ) : (
@@ -55,6 +57,7 @@ function CalendarItem({
                 isModify: false,
               })
             }
+            tabIndex={0}
           >{`${current.format('DD')}`}</span>
         )}
       </>
@@ -71,7 +74,7 @@ function CalendarItem({
     const calendar = [];
     for (let week = startWeek; week <= endWeek; week++) {
       calendar.push(
-        <div className="row" key={week}>
+        <ul className="row" key={week}>
           {Array(7)
             .fill(0)
             .map((n, i) => {
@@ -86,15 +89,15 @@ function CalendarItem({
               const isGrayed =
                 current.format('MM') === date.format('MM') ? '' : 'grayed';
               return (
-                <div
+                <li
                   className={`box ${isGrayed} ${isToday}`}
                   key={current.format('YYYYMMDD')}
                 >
                   {renderPoster(current)}
-                </div>
+                </li>
               );
             })}
-        </div>,
+        </ul>,
       );
     }
     return calendar;

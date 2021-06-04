@@ -8,7 +8,7 @@ interface CloseButtonProps {
 
 function CloseButton(props: CloseButtonProps) {
   return (
-    <button css={S.button} {...props}>
+    <button css={S.button} {...props} aria-label="닫기">
       <CloseIcon />
     </button>
   );

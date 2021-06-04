@@ -14,6 +14,8 @@ function Ticket({ ticket, changeTicketInfo }: IicketProps) {
     <div
       css={S.ticketItem(ticket.poster)}
       onClick={() => changeTicketInfo(ticket)}
+      role="button"
+      tabIndex={0}
     >
       <span css={S.category}>{CATEGORY[ticket.category]}</span>
       <h3 css={S.title}>{ticket.title}</h3>

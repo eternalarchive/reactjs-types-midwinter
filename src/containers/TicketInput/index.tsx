@@ -185,12 +185,12 @@ function TicketInput() {
           />
           <button css={S.saveButton}>저장하기</button>
         </form>
-        <CloseButton css={S.closeButton} onClick={closeForm} />
         {ticketState.isModify && (
           <button css={S.deleteButton} onClick={deleteTicket}>
             티켓 삭제
           </button>
         )}
+        <CloseButton css={S.closeButton} onClick={closeForm} />
       </section>
     </>
   );

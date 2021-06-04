@@ -40,6 +40,7 @@ function Statistics() {
           css={S.tabItem(clickedTab === 'actor')}
           role="button"
           onClick={() => changeTab('actor')}
+          tabIndex={0}
         >
           배우
         </li>
@@ -47,6 +48,7 @@ function Statistics() {
           css={S.tabItem(clickedTab === 'view')}
           role="button"
           onClick={() => changeTab('view')}
+          tabIndex={0}
         >
           회차, 금액
         </li>

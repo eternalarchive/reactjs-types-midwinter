@@ -30,39 +30,45 @@ function MonthlyCalendar({
           <h3 css={S.title}>{date.format('MMMM')}</h3>
         </div>
         <div css={S.buttonBox}>
-          <button onClick={() => changeDate(date.subtract(1, 'month'))}>
+          <button
+            onClick={() => changeDate(date.subtract(1, 'month'))}
+            aria-label={`${date.subtract(1, 'month').format('MMMM')}로 이동`}
+          >
             <SimpleLeftArrow />
           </button>
           <span css={S.line} />
-          <button onClick={() => changeDate(date.add(1, 'month'))}>
+          <button
+            onClick={() => changeDate(date.add(1, 'month'))}
+            aria-label={`${date.add(1, 'month').format('MMMM')}로 이동`}
+          >
             <SimpleRightArrow />
           </button>
         </div>
       </div>
       <div css={S.body}>
-        <div className="row">
-          <div className="box indicator">
+        <ul className="row">
+          <li className="box indicator">
             <span className="text week">SUN</span>
-          </div>
-          <div className="box indicator">
+          </li>
+          <li className="box indicator">
             <span className="text week">MON</span>
-          </div>
-          <div className="box indicator">
+          </li>
+          <li className="box indicator">
             <span className="text week">TUE</span>
-          </div>
-          <div className="box indicator">
+          </li>
+          <li className="box indicator">
             <span className="text week">WED</span>
-          </div>
-          <div className="box indicator">
+          </li>
+          <li className="box indicator">
             <span className="text week">THU</span>
-          </div>
-          <div className="box indicator">
+          </li>
+          <li className="box indicator">
             <span className="text week">FRI</span>
-          </div>
-          <div className="box indicator">
+          </li>
+          <li className="box indicator">
             <span className="text week">SAT</span>
-          </div>
-        </div>
+          </li>
+        </ul>
         <CalendarItem
           date={date}
           calendarTickets={calendarTickets}

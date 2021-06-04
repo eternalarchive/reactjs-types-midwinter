@@ -17,6 +17,12 @@ function PosterBox({
   handleImageClick,
 }: PosterBoxProps) {
   if (loading) return <Loading />;
+
+  const clickImg = (link: string) => {
+    handleImageClick(link);
+    setImgSearchOpen(false);
+  };
+
   return (
     <>
       {posters ? (
@@ -25,15 +31,11 @@ function PosterBox({
             (item: { link: string; title: string }, index: number) => (
               <li
                 css={S.poster}
-                onClick={() => handleImageClick(item.link)}
+                onClick={() => clickImg(item.link)}
                 key={`${item.title + index}`}
+                tabIndex={0}
               >
-                <img
-                  src={item.link}
-                  alt={item.title}
-                  css={S.img}
-                  onClick={() => setImgSearchOpen(false)}
-                />
+                <img src={item.link} alt={item.title} css={S.img} />
               </li>
             ),
           )}
