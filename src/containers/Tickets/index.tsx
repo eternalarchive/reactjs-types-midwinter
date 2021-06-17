@@ -1,14 +1,14 @@
-import React, { useState, useEffect, createRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../store/rootReducer';
 import SearchIcon from '../../components/Svgs/SearchIcon';
-import Ticket from '../../components/DataDisplay/Ticket';
-import EmptyBox from '../../components/DataDisplay/EmptyBox';
 import Loading from '../../components/Common/Loading';
 import { showTicketInputForm } from '../TicketInput/actions';
 import { IticketData } from '../Schedule/saga';
 import { getAllTicketsRequest } from '../Schedule/actions';
+import LoadMore from './LoadMore';
+import TicketList from './TicketList';
 import { S } from './styles';
 
 function Tickets() {
@@ -18,7 +18,8 @@ function Tickets() {
   );
   const [tickets, setTickets] = useState<IticketData[] | []>([]);
   const [filterTickets, setFilterTickets] = useState<IticketData[] | []>([]);
-  const searchInputRef = createRef<any>();
+  const [page, setPage] = useState<number>(5);
+  const searchInputRef = useRef<any>();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,8 +41,8 @@ function Tickets() {
   }, [calendarTickets]);
 
   useEffect(() => {
-    setFilterTickets(tickets);
-  }, [tickets]);
+    setFilterTickets(tickets.slice(0, page));
+  }, [tickets, page]);
 
   const searchTickets = () => {
     if (!calendarTickets) return;
@@ -75,19 +76,8 @@ function Tickets() {
         />
         <SearchIcon css={S.searchIcon} />
       </label>
-      {filterTickets?.length !== 0 ? (
-        <div css={S.ticket}>
-          {filterTickets?.map((ticket: IticketData) => (
-            <Ticket
-              key={ticket._id}
-              ticket={ticket}
-              changeTicketInfo={changeTicketInfo}
-            />
-          ))}
-        </div>
-      ) : (
-        <EmptyBox />
-      )}
+      <TicketList tickets={filterTickets} changeTicketInfo={changeTicketInfo} />
+      <LoadMore setPage={setPage} />
     </section>
   );
 }
