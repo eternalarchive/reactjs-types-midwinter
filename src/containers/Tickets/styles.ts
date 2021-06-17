@@ -2,11 +2,11 @@ import { css, keyframes } from '@emotion/react';
 
 const ticketAni = keyframes`
   from {
-    margin-top: 50px;
+    transform: translate(0, 50px);
     opacity: 0;
   }
   to {
-    margin-top: 30;
+    transform: translate(0, 30px);
     opacity: 1;
   }
 `;
